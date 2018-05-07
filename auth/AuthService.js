@@ -21,7 +21,7 @@ module.exports = {
 
     TokenService.makeToken({
       username: req.body.username,
-      roles:    ['admin', 'editor', 'user'],
+      // roles:    ['admin', 'editor', 'user'],
     })
       .then((token) => {
         res.locals.token = token;
