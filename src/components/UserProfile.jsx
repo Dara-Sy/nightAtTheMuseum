@@ -10,13 +10,14 @@ class UserProfile extends React.Component {
       username: '',
       faves_id: ''
     }
+
   }
 
 
   allFaves(museum){
     fetch(`api/:user_id/faves/${museum.museum_id}`, {
       body: JSON.stringify({
-        museum_id: ,
+        museum_id: museum.,
         faves_id: ,
         user_id:
       })
@@ -32,7 +33,7 @@ class UserProfile extends React.Component {
     })
     .then(response => response.json())
       .then(response => {
-
+        this.props.
       })
       .catch(err => {
         next(err)
@@ -43,7 +44,7 @@ class UserProfile extends React.Component {
 
   render(props){
     return(
-      const favorites =
+      const favorites = this.props.
       <div>
 
       </div>
