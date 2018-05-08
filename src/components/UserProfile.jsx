@@ -7,7 +7,9 @@ class UserProfile extends React.Component {
     this.state = {
       museum: [],
       user: {}
-    }
+    };
+
+    this.delFaves = this.delFaves.bind(this);
 
   }
 
