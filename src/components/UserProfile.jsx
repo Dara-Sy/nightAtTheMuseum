@@ -11,16 +11,15 @@ class UserProfile extends React.Component {
 
   }
 
-  componentWillMount() {
-
-  }
 
   // fetch all the users favorite museums
-  allFaves(){
+  componentWillMount(user){
     fetch(`/${user.user_id}/faves/`})
     .then(response => response.json())
       .then(response => {
         this.setState({
+          museum: [{user.museum_id}],
+          user: {}
 
         })
       })
