@@ -13,7 +13,7 @@ class UserProfile extends React.Component {
 
   }
 
-
+  // fetch all the users favorite museums
   allFaves(museum){
     fetch(`api/:user_id/faves/${museum.museum_id}`, {
       body: JSON.stringify({

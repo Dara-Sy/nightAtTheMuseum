@@ -11,7 +11,14 @@ class Museums extends React.Component {
 
   render(props){
     return(
-
+      <div>
+        <div className="commenter">
+          {}
+        </div>
+        <div className="comment">
+          {}
+        </div>
+      </div>
       )
   }
 
