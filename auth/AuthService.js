@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
-const User   = require('../user/model/User');
+const model = require('../server/models');
 const TokenService = require('./TokenService');
 
 
 const isValidUser = async ({ username, password:textPassword }) => {
   try {
-    const user = await User.findOne(username);
-    return await bcrypt.compare(textPassword, user.password);
+    const user = await model.findOneUser(username);
+    return await bcrypt.compare(textPassword, user.password_digest);
   } catch (err) {
     console.error(err);
     return false;
@@ -14,6 +14,44 @@ const isValidUser = async ({ username, password:textPassword }) => {
 };
 
 module.exports = {
+  async generatePassword(req, res, next) {
+    const { password } = req.body;
+    await bcrypt.hash(password, 11)
+      .then( (hash) => {
+        res.locals.user = req.body;
+        res.locals.user.password_digest = hash;
+        next();
+      })
+      .catch( (err) => {
+        next(err);
+      })
+  },
+
+  doesUserExist(req, res, next) {
+    model.findOneUser(req.body.username)
+      .then(data => {
+        if(data.length !== 0){
+          next();
+        } else {
+          res.send('User already exists');
+        }
+      })
+      .catch(err => {
+        next(err);
+      })
+
+  },
+
+  registerUser(req, res, next) {
+    model.addUser(res.locals.user)
+      .then( (data) => {
+        next();
+      })
+      .catch((err) => {
+        next(err);
+      })
+  },
+
   authenticate(req, res, next) {
     if (!isValidUser(req.body)) {
       return next({});
