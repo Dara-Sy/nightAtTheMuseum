@@ -10,16 +10,14 @@ module.exports = function museumDB(db) {
          WHERE users.user_id = $1
         `, favesid);
     },
-    getOneFave(favesid) {
-      return db.many(`
-        SELECT users.username, faves.museum_id
-          FROM users
-          JOIN faves
-            ON (users.user_id = faves.user_id)
-          WHER users.user_id = $1
-          `, favesid);
-    },
 
+    getOneFave(user_id) {
+      return db.any(`
+        SELECT faves.museum_id
+          FROM faves
+         WHERE faves.user_id = $1
+          `, user_id);
+    },
 
     destroy(user_id, favesid) {
       return db.none(`
@@ -27,28 +25,38 @@ module.exports = function museumDB(db) {
           FROM faves
          WHERE faves_id = $2,
            AND user_id = $1
-          `, [user_id, faves_id]);
+            `, [user_id, faves_id]);
+    },
+    getComments(user_id) {
+      return DB.many(`
+        SELECT
+               museum_id,
+               comments,
+               rating
+          FROM comments
+         WHERE user_id = 1$
+               `,user_id);
     },
 
     create(data) {
       return db.one(`
         INSERT INTO comments
-            museum_id = $/museum_id/,
-             comments = $/comments/,
-               rating = $/rating/,
-              user_id = $/user_id/
-          WHERE comments_id = $/comments_id/`)
+     museum_id = $/museum_id/,
+      comments = $/comments/,
+        rating = $/rating/,
+       user_id = $/user_id/
+         WHERE comments_id = $/comments_id/`)
     },
 
     updateComments(favesid) {
       return db.one(`
         UPDATE comments
            SET
-             museum_id = $/museum_id/,
-              comments = $/comments/,
-                rating = $/rating/
+     museum_id = $/museum_id/,
+      comments = $/comments/,
+        rating = $/rating/
          WHERE faves_id = $/faves_id/
-         RETURNING *
+     RETURNING *
              `, faves_id);
     },
 
