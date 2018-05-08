@@ -14,6 +14,12 @@ class Museums extends React.Component {
 
   }
 
+
+
+  addFave(){
+
+  }
+
   render(props){
     return(
       <div>
