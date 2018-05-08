@@ -9,6 +9,11 @@ class Museums extends React.Component {
     }
   }
 
+
+  componentWillMount(){
+
+  }
+
   render(props){
     return(
       <div>

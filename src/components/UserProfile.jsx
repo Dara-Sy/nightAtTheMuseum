@@ -7,8 +7,11 @@ class UserProfile extends React.Component {
     this.state = {
       museum: [],
       user: {}
-
     }
+
+  }
+
+  componentWillMount() {
 
   }
 
@@ -17,7 +20,9 @@ class UserProfile extends React.Component {
     fetch(`/${user.user_id}/faves/`})
     .then(response => response.json())
       .then(response => {
-        this.props.
+        this.setState({
+
+        })
       })
       .catch(err => {
         next(err)
