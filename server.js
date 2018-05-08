@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(tokenService.receiveToken);
+app.use(TokenService.receiveToken);
 
 app.use('/', authRouter);
 
