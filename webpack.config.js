@@ -27,7 +27,7 @@ const vendorPackages = [
 // and the id where we'll attach our react app
 // @note this should match whatever's in the `entryPoint`
 const htmlConfig = {
-  title:      'Jason’s Application',
+  title:      'Night At The Museum',
   appMountId: 'container',
 };
 
@@ -88,6 +88,9 @@ module.exports = {
         test: /\.jsx?$/,
         use:  [{
           loader:   'babel-loader',
+            query: {
+                presets: ['react']
+            }
         }],
         exclude: /node_modules/,
       },

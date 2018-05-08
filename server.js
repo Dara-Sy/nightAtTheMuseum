@@ -3,6 +3,7 @@ const express    = require('express');
 const logger     = require('morgan');
 const path       = require('path');
 
+const tokenService = require('./auth/TokenService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
