@@ -30,6 +30,10 @@ We are creating a React/Express Full CRUD App that uses Google Maps API to help 
 
 ![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0039.jpg)
 
+Updated faves table in ERD 
+
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/faves%20table.jpg)
+
 
 ## Technologies: 
 - React - used to render the views of the CRUD app
