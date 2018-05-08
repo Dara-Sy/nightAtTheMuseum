@@ -16,9 +16,17 @@ class UserProfile extends React.Component {
   componentWillMount(user){
     fetch(`/${user.user_id}/faves/`})
     .then(response => response.json())
-      .then(response => {
+      .then(data => {
+        let FaveList = this.state.museum.slice()
+          FaveList.forEach(d => {
+            for(let i = 0; i < data.length; i++){
+              if(d.museum_id === data[i].museum_id){
+                d.fave = 'true'
+              }
+            }
+          })
         this.setState({
-          museum: [{user.museum_id}],
+          museum: FaveList,
           user: {}
 
         })
