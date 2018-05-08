@@ -11,26 +11,39 @@
 
   router.route('/:userid/faves/:favesid')
     // React sends user_id, favesid
-    .delete(controller.delFaves , resHandler.)
+    .delete(controller.delFaves, resHandler.)
 
   router.route('/:userid/faves')
     // React sends commentid, comment, rating
     // get faves list
-    .get(controller.getAllFaves , resHandler.)
+    .get(controller.getAllFaves, resHandler.)
     // change comment
-    .put(controller.updateFave , resHandler.)
+    .put(controller.updateComment, resHandler.)
 
   router.route('/museum/:museumid')
     // React sends user_id, comment, rating
-    .get(controller.getFave , resHandler.)
-    .post(controller.createFave , resHandler.);
+    // check if you favorited the museum
+    .get(controller.getFave, resHandler.)
+    // add comment to museum
+    .post(controller.createComment, resHandler.);
 
   router.route('/search')
     // React sends museum_id
     // get fave (checks to see if you favorited museum)
-    .get(controller. , resHandler.);
+    .get(controller.isItAFave, resHandler.sendJSON);
 
   router.use(resHandler.send404);
   return router;
 
  };
+
+
+
+
+
+
+
+
+
+
+

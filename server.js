@@ -2,7 +2,7 @@ require('dotenv').config();
 const express    = require('express');
 const logger     = require('morgan');
 const path       = require('path');
-
+const tokenService = require('./auth/TokenService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(tokenService.receiveToken);
+app.use(TokenService.receiveToken);
 
 
 app.use('/api', (req, res) => {
