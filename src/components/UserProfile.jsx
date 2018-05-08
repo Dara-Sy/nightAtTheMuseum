@@ -17,7 +17,7 @@ class UserProfile extends React.Component {
   allFaves(museum){
     fetch(`api/:user_id/faves/${museum.museum_id}`, {
       body: JSON.stringify({
-        museum_id: museum.,
+        museum_id: museum.museum_id,
         faves_id: ,
         user_id:
       })
