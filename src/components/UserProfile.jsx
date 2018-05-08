@@ -39,14 +39,14 @@ class UserProfile extends React.Component {
 
   // delete a favorite
   delFaves(fave) {
-    let newList = this.state.museum.slice();
+    let newFaves = this.state.museum.slice();
     let index = 0;
-    newList.forEach((d, i) => {
+    newFaves.forEach((d, i) => {
       if(d.museum_id === data[i].museum_id) {
         index = i;
       }
     })
-    let data = newList.splice(index, 1)
+    let data = newFaves.splice(index, 1)
     fetch(`/${user.user_id}/faves/:faves_id`, {
       body: JSON.stringify(data),
       cache: 'no-cache',
@@ -63,7 +63,7 @@ class UserProfile extends React.Component {
     .then(response => response.json())
       .then((response) => {
         this.setState({
-          museum: newList,
+          museum: newFaves,
           user: {}
         })
       })
@@ -73,7 +73,7 @@ class UserProfile extends React.Component {
 
   render(props){
     return(
-      const favorites = this.props.
+      const favorites = this.props.state
       <div>
 
       </div>
