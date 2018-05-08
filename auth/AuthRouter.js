@@ -1,17 +1,24 @@
 const express = require('express')
 
-const authService = require('./auth/AuthService');
-const tokenService = require('./auth/TokenService');
+const authService = require('./AuthService');
+const tokenService = require('./TokenService');
 const resHandler = require('../server/resHandler')
 
 const app = express.Router();
 
-app.route('/')
+app.route('/register')
   .post(
     authService.doesUserExist,
     authService.generatePassword,
     authService.registerUser,
-    resHandler.handleUserLogin
-    )
+    authService.authenticate,
+    resHandler.tester
+  )
+
+app.route('/login')
+  .post(
+    authService.authenticate,
+    resHandler.handleUserLogin,
+  )
 
 module.exports = app;

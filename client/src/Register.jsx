@@ -32,18 +32,19 @@ export default class Register extends React.Component {
     } else {
       this.refs.dontmatchmsg.innerText = '';
       let theData = this.state;
-      fetch(`/register`, {
-      body: JSON.stringify(theData),
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'content-type': 'application/json'
-      },
-      method: 'POST',
-      mode: 'cors',
-      redirect: 'follow',
-      referrer: 'no-referrer',
-    })
+      console.log('this is theData', theData)
+      fetch('http://localhost:3001/register', {
+        body: JSON.stringify(theData),
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'content-type': 'application/json'
+        },
+        method: 'POST',
+        mode: 'cors',
+        redirect: 'follow',
+        referrer: 'no-referrer',
+      })
     }
   }
 

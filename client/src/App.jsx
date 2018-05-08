@@ -1,7 +1,8 @@
 import React  from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Register from './Register'
+import Register from './Register';
+import Login from './Login';
 import './App.css';
 
 export default class App extends React.Component {
@@ -17,15 +18,15 @@ export default class App extends React.Component {
       <div>
         <main>
           <Switch>
-            <Route path='/:userid/faves/:favesid' />
-            <Route path='/:userid/faves' />
-            <Route path='/search' />
-            <Route path='/register' component={Register} />
-            <Route path='/' />
+            <Route path="/:userid/faves/:favesid" />
+            <Route path="/:userid/faves" />
+            <Route path="/search" />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route path="/" />
           </Switch>
         </main>
         <h1>Hello Good Sir!</h1>
-        <Register />
       </div>
     );
   }

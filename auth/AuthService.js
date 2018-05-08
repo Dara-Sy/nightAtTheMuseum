@@ -16,6 +16,7 @@ const isValidUser = async ({ username, password:textPassword }) => {
 module.exports = {
   async generatePassword(req, res, next) {
     const { password } = req.body;
+    console.log('req.bodyin passgen', req.body)
     await bcrypt.hash(password, 11)
       .then( (hash) => {
         res.locals.user = req.body;
@@ -28,9 +29,11 @@ module.exports = {
   },
 
   doesUserExist(req, res, next) {
+    console.log('doesuserexist', req.body)
     model.findOneUser(req.body.username)
       .then(data => {
-        if(data.length !== 0){
+        console.log('this is ',data)
+        if(data.length === 0){
           next();
         } else {
           res.send('User already exists');
@@ -56,17 +59,16 @@ module.exports = {
     if (!isValidUser(req.body)) {
       return next({});
     }
-
     TokenService.makeToken({
       username: req.body.username,
-      // roles:    ['admin', 'editor', 'user'],
+      roles:    ['admin'],
     })
       .then((token) => {
         res.locals.token = token;
         next();
       })
       .catch(next);
-    return false;
+        return false;
   },
 
   allow({ roles }) {
