@@ -7,9 +7,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "bcrypt": "^2.0.1",
+    "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "jsonwebtoken": "^8.2.1",
     "morgan": "^1.9.0",
     "pg-promise": "^8.4.0"
   },
@@ -32,7 +35,7 @@
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.5",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^3.0.7",
     "html-webpack-template": "^6.1.0",
     "node-sass": "^4.7.2",
     "nodemon": "^1.12.5",
@@ -47,6 +50,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
+    "bothdev": "concurrently \"cd client && yarn start\" \"npm run dev\"",
     "debug": "nodemon --inspect-brk server.js",
     "test": "NODE_ENV=test PORT=3333 mocha --recursive --reporter spec",
     "build": "webpack -p --mode production",
