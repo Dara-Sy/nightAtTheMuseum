@@ -8,7 +8,7 @@ module.exports = function museumDB(db) {
        (username, password_digest, fname, lname)
       VALUES
         ($/username/, $/password_digest/, $/fname/, $/lname/)
-      `);
+      `, data);
   },
 
   findOneUser(username) {
@@ -42,7 +42,7 @@ module.exports = function museumDB(db) {
         FROM faves
        WHERE faves_id = $2,
          AND user_id = $1
-          `, [user_id, faves_id]);
+          `, [user_id, favesid]);
   },
 
   getComments(user_id) {
@@ -52,8 +52,8 @@ module.exports = function museumDB(db) {
              comments,
              rating
         FROM comments
-       WHERE user_id = 1$
-             `,user_id);
+       WHERE user_id = $1
+             `, user_id);
   },
 
   create(data) {
@@ -63,10 +63,10 @@ module.exports = function museumDB(db) {
     comments = $/comments/,
       rating = $/rating/,
      user_id = $/user_id/
-       WHERE comments_id = $/comments_id/`)
+       WHERE comments_id = $/comments_id/`, data);
   },
 
-  updateComments(favesid) {
+  updateComments(data) {
     return db.one(`
       UPDATE comments
          SET
@@ -75,7 +75,7 @@ module.exports = function museumDB(db) {
       rating = $/rating/
        WHERE faves_id = $/faves_id/
    RETURNING *
-           `, faves_id);
+           `, data);
 
   },
   };
@@ -83,4 +83,3 @@ module.exports = function museumDB(db) {
 
 
 
-};
