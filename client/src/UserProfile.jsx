@@ -42,7 +42,7 @@ class UserProfile extends React.Component {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === data[i].museum_id) {
+      if(d.museum_id === fave[i].museum_id) {
         index = i;
       }
     })
