@@ -6,19 +6,25 @@ const path       = require('path');
 const tokenService = require('./auth/TokenService');
 const authRouter = require('./auth/AuthRouter');
 
+// const dbConx     = require('./config/connection');
+// const museumRouter = require('./server')(dbConx);
+const museumRouter = require('./server/router');
 const app = express();
+
 const PORT = process.env.PORT || 3001;
 
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(TokenService.receiveToken);
+app.use(tokenService.receiveToken);
 
 app.use('/', authRouter);
 
-app.use((err, req, res, next) => {
-  res.status(500).send('Something broke!');
-});
+app.use('/api', museumRouter);
+
+// app.use((err, req, res, next) => {
+//   res.status(500).send('Something broke!');
+// });
 
 
 app.listen(PORT, () => {

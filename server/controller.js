@@ -1,32 +1,34 @@
-module.exports = museumDB => {
-  async getAllFaves(req, res, next) {
-    // hit the db to get favorites list
-    try {
-      req.body.favesid = req.params.favesid;
-      res.local.museums = await museumDB.getAllFaves(req.body.favesid);
-      next();
-    } catch (e) {
-      next(e);
-    }
-  },
+const museumDB = require('./models');
 
-  // user_id, comment, rating
+module.exports = {
+  // async getAllFaves(req, res, next) {
+  //   // hit the db to get favorites list
+  //   try {
+  //     req.body.favesid = req.params.favesid;
+  //     res.local.museums = await museumDB.getAllFaves(req.body.favesid);
+  //     next();
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // },
 
-  async getFave(req, res, next) {
-    // checks db to see if you favorited this museum
-    try {
-      let req = {
-        params: {
-          user_id: 1,
-          comments: '',
-          rating: 0,
-        }
-      res.locals.museum = await museumDB.getOne(req.params);
-      next();
-    } catch (e) {
-      next(e);
-    }
-  },
+  // // user_id, comment, rating
+
+  // async getFave(req, res, next) {
+  //   // checks db to see if you favorited this museum
+  //   try {
+  //     let req = {
+  //       params: {
+  //         user_id: 1,
+  //         comments: '',
+  //         rating: 0,
+  //       }
+  //     res.locals.museum = await museumDB.getOne(req.params);
+  //     next();
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // },
 
   async createComment(req, res, next) {
     // hits db to add comment to museum (faves table)
@@ -40,21 +42,21 @@ module.exports = museumDB => {
     }
   },
 
-  async updateComment(req, res, next) {
-    // hit the db to change comment
-    try {
-      let req = {
-        params: {
-          comment_id: 1,
-          comments: '',
-          rating: 0,
-        }
-      res.locals.museum = await museumDB.updateOne(req.params);
-      next();
-    } catch (e) {
-      next(e);
-    }
-  },
+  // async updateComment(req, res, next) {
+  //   // hit the db to change comment
+  //   try {
+  //     let req = {
+  //       params: {
+  //         comment_id: 1,
+  //         comments: '',
+  //         rating: 0,
+  //       }
+  //     res.locals.museum = await museumDB.updateOne(req.params);
+  //     next();
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // },
 
   async delFave(req, res, next) {
     // hit the db to unfavorite something
@@ -80,20 +82,23 @@ module.exports = museumDB => {
         // find one
         // if return back data
         // conditional stmt inside the then
-       data = await museumDB.getOneFave(req.params)
-        .then (d => {
-          let res.locals.museum = d;
+        // console.log("this is req.params:", req.params);
+       data = await museumDB.getOneFave(2)
+       console.log("this is data", data);
+          // let res.locals.museum = d;
           // show the favorites
+
           // res.send('Is it a Fave:' + data.favesid)
           next();
         })
           .catch (e => {
             next(e);
         })
+
     }
   },
 
-});
+};
 
 
 

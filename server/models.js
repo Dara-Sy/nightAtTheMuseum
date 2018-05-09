@@ -76,7 +76,11 @@ module.exports = function museumDB(db) {
        WHERE faves_id = $/faves_id/
    RETURNING *
            `, faves_id);
+
   },
   };
 }
 
+
+
+};
