@@ -28,8 +28,7 @@ class UserProfile extends React.Component {
             }
           })
         this.setState({
-          museum: FaveList,
-          user: {}
+          museum: FaveList
         })
       })
       .catch(err => {
@@ -42,7 +41,7 @@ class UserProfile extends React.Component {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === fave[i].museum_id) {
+      if(d.museum_id === fave.museum_id) {
         index = i;
       }
     })
@@ -63,8 +62,7 @@ class UserProfile extends React.Component {
     .then(response => response.json())
       .then((response) => {
         this.setState({
-          museum: newFaves,
-          user: {}
+          museum: newFaves
         })
       })
   }

@@ -11,6 +11,11 @@ class Museums extends React.Component {
 
 
   componentWillMount(){
+    fetch(``)
+    .then(response => response.json())
+      .then(data => {
+
+      })
 
   }
 
