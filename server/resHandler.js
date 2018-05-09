@@ -11,7 +11,7 @@ module.exports = {
 
   sendJSON(req,res) {
     //show one or all
-    res.json(res.locals.museums || res.locals.museums);
+    res.json(res.locals.museum || res.locals.museums);
   },
 
   handleDel(req,res) {

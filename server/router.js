@@ -21,8 +21,8 @@
   router.route('/:userid/faves')
     // React sends commentid, comment, rating
     // get faves list
-    .get(controller.getAllFaves, resHandler.sendJSON)
-    // change comment
+    .get(controller.getAllFaves, controller.getUser, resHandler.sendJSON)
+    // change, update, edit comment
     .put(controller.updateComment, resHandler.sendJSON)
 
   router.route('/museum/:museumid')
@@ -31,6 +31,12 @@
     .get(controller.getFave, resHandler.sendJSON)
     // add comment to museum
     .post(controller.createComment, resHandler.sendJSON);
+    // MISSING adding a museum to favorites
+    // hits db to update the museum's status of fave or to change a comment
+
+    // I started to write the put route for you, but you can finish it
+
+    .put(controller., resHandler.sendJSON)
 
 
 //this get route will need access to user id included in endpoint
