@@ -1,7 +1,7 @@
 const db = require('../config/connection');
 
-module.exports = function museumDB(db) {
-  return {
+module.exports =  {
+
     addUser(data) {
     return db.none(`
       INSERT INTO users
@@ -76,6 +76,7 @@ module.exports = function museumDB(db) {
        WHERE faves_id = $/faves_id/
    RETURNING *
            `, faves_id);
-  },
-};
+    },
 
+
+};
