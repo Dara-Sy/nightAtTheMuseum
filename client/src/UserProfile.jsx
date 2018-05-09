@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 
 class UserProfile extends React.Component {
@@ -72,9 +72,30 @@ class UserProfile extends React.Component {
   render(props){
     return(
       const favorites = this.props.state
-      <div>
-
-      </div>
+      <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
       )
   }
 }

@@ -5,6 +5,8 @@ class Museums extends React.Component {
   constructor(props){
     super(props);
     this.state ={
+      museum: [],
+      comments: []
 
     }
   }
@@ -24,21 +26,38 @@ class Museums extends React.Component {
   addFave(){
 
   }
-
+// Bulma template for table
   render(props){
     return(
-      <div>
-        <div className="commenter">
-          {}
-        </div>
-        <div className="comment">
-          {}
-        </div>
-      </div>
+      <table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    </tbody>
+  </table>
       )
   }
 
 }
+
 
 
 
