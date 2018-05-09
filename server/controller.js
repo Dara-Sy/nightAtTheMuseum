@@ -84,7 +84,7 @@ module.exports = museumDB => {
         .then (d => {
           let res.locals.museum = d;
           // show the favorites
-          res.send('Is it a Fave:' + data.favesid)
+          // res.send('Is it a Fave:' + data.favesid)
           next();
         })
           .catch (e => {
