@@ -75,7 +75,6 @@ class UserProfile extends React.Component {
     const favorites = this.props.FaveList.map((fave, i) => {
       if(fave.museum_id === i.museum_id){
     return(
-      <table className="table">
         <tbody>
           <tr>
             <th></th>
@@ -87,18 +86,19 @@ class UserProfile extends React.Component {
             </span>
           </tr>
         </tbody>
-      </table>
       )
   }
       })
     return(
       <div>
-        <thead>
+        <table className="table">
+         <thead>
           <tr>
             <th>Favorites</th>
           </tr>
-        </thead>
+         </thead>
         {favorites}
+        </table>
       </div>
       )
   }
