@@ -1,6 +1,7 @@
 import React  from 'react';
 import { Route, Switch } from 'react-router-dom';
 import UserProfile from './UserProfile';
+import Search from './Search';
 import Register from './Register';
 import Login from './Login';
 import Museums from './Museums';
@@ -24,7 +25,7 @@ export default class App extends React.Component {
               path="/museum/:museumid"
               render={() => (<Museums props={this.state.museum} />)} />
             <Route path="/:userid/faves" component={UserProfile}/>
-            <Route path="/search" />
+            <Route path="/search" component={Search} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/" />
