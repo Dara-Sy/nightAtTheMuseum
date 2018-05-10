@@ -11,7 +11,8 @@ class Museums extends React.Component {
     }
   }
 
-
+  // Will fetch museum info from API(?) to render
+  // individual museum page
   componentWillMount(){
     fetch(`/museum/:museumid`)
     .then(response => response.json())
@@ -25,7 +26,7 @@ class Museums extends React.Component {
   }
 
 
-
+  // will add museum to the faves list
   addFave(){
 
   }
