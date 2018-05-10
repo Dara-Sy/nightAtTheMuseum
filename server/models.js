@@ -10,8 +10,6 @@ module.exports = function museumDB(db) {
           ($/username/, $/password_digest/, $/fname/, $/lname/)
         `, data);
     },
-
-<<<<<<< HEAD
     findOneUser(username) {
       return db.any(`
         SELECT * FROM users
@@ -70,17 +68,17 @@ module.exports = function museumDB(db) {
       `);
     },
 
-    updateComments(data) {
-      return db.one(`
-        UPDATE comments
-           SET
-     museum_id = $/museum_id/,
-      comments = $/comments/,
-        rating = $/rating/
-         WHERE faves_id = $/faves_id/
-     RETURNING *
-             `, data);
-    },
+    // updateComments(data) {
+    //   return db.one(`
+    //     UPDATE comments
+    //        SET
+    //  museum_id = $/museum_id/,
+    //   comments = $/comments/,
+    //     rating = $/rating/
+    //      WHERE faves_id = $/faves_id/
+    //  RETURNING *
+    //          `, data);
+    // },
   // adding comments to museum
   // adds to faves table
   // passing 1 thing, data
@@ -119,9 +117,9 @@ module.exports = function museumDB(db) {
      WHERE faves_id = $/faves_id/
    RETURNING *
            `, data);
->>>>>>> eae9b59c82318537b09732f33c7768f50b5bc64d
 
-  };
+  }
+}
 }
 
 
