@@ -16,7 +16,7 @@ class UserProfile extends React.Component {
 
   // fetch all the users favorite museums
   componentWillMount(){
-    fetch(`/${user}/faves/`)
+    fetch(`/:userid/faves/`)
     .then(response => response.json())
       .then(data => {
         let FaveList = this.state.museum.slice()
@@ -72,7 +72,7 @@ class UserProfile extends React.Component {
   // checking if fave museum id = index of array museum id
   // and show results in table
   render(props){
-    const favorites = this.props.FaveList.map((fave, i) => {
+    const favorites = this.props.museum.map((fave, i) => {
       if(fave.museum_id === i.museum_id){
     return(
         <tbody>
@@ -97,7 +97,7 @@ class UserProfile extends React.Component {
             <th>Favorites</th>
           </tr>
          </thead>
-        {favorites}
+          {favorites}
         </table>
       </div>
       )
