@@ -38,6 +38,7 @@ class Museums extends React.Component {
   addFave(){
 
   }
+
 // Bulma template for table
   render(props){
     return(
