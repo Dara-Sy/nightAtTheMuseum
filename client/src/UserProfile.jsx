@@ -71,7 +71,7 @@ class UserProfile extends React.Component {
   // Bulma template for table
   render(props){
     const favorites = this.props.FaveList.map((fave, i) => {
-      if()
+      if(fave.museum_id === i.museum_id)
     })
     return(
       <table className="table">
