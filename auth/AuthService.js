@@ -3,10 +3,13 @@ const model = require('../server/models');
 const TokenService = require('./TokenService');
 
 
-const isValidUser = async ({ username, password:textPassword }) => {
+const isValidUser = async (data) => {
   try {
-    const user = await model.findOneUser(username);
-    return await bcrypt.compare(textPassword, user.password_digest);
+    const user = await model.findOneUser(data.username);
+    console.log('pass is: ', data.password)
+    console.log('user is: ', user)
+    console.log('hash is: ', user.password_digest)
+    return await bcrypt.compare(data.password, killArray(user).password_digest);
   } catch (err) {
     console.error(err);
     return false;
@@ -16,7 +19,6 @@ const isValidUser = async ({ username, password:textPassword }) => {
 module.exports = {
   async generatePassword(req, res, next) {
     const { password } = req.body;
-    console.log('req.bodyin passgen', req.body)
     await bcrypt.hash(password, 11)
       .then( (hash) => {
         res.locals.user = req.body;
@@ -29,7 +31,6 @@ module.exports = {
   },
 
   doesUserExist(req, res, next) {
-    console.log('doesuserexist', req.body)
     model.findOneUser(req.body.username)
       .then(data => {
         console.log('this is ',data)
@@ -87,4 +88,12 @@ module.exports = {
       },
     ];
   },
+
+  killArray(user) {
+    if(Array.isArray(user)) {
+      return user[0];
+    } else {
+      return user;
+    }
+  }
 };

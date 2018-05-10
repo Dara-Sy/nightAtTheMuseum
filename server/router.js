@@ -25,7 +25,7 @@
       resHandler.sendJSON
       )
 
-  router.route('/museum/:museumid')
+  router.route('/museum/:commentid')
     // React sends user_id, comment, rating
     // check if you favorited the museum
     .get(
@@ -40,7 +40,11 @@
       controller.updateComment,
       resHandler.sendJSON
       )
-
+  router.route('/secret')
+    .get(
+      controller.getAPIKey,
+      resHandler.sendAPI
+      )
 //this get route will need access to user id included in endpoint
 //because of the way the isItAFave function is currently set up
 //to require input of user_id (because since it's a get route and not

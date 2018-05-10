@@ -24,6 +24,7 @@ CREATE TABLE users (
 CREATE TABLE comments (
   comments_id SERIAL PRIMARY KEY,
   museum_id VARCHAR(255),
+  museum_location TEXT,
   comments TEXT,
   rating INTEGER DEFAULT 0,
   user_id INTEGER REFERENCES users(user_id),

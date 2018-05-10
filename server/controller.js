@@ -1,4 +1,5 @@
 const museumDB = require('./models');
+require('dotenv').config();
 
 module.exports = {
 
@@ -43,10 +44,11 @@ module.exports = {
   async getFave(req, res, next) {
     // checks db to see if you favorited this museum
     try {
-      res.locals.museum = await museumDB.getOneFave(parseInt(req.params.museumid));
+      console.log('this is running', req.params)
+      res.locals.museum = await museumDB.getOneFave(parseInt(req.params.commentid));
       next();
     } catch (e) {
-      next(e);
+      console.log(e);
     }
   },
 
@@ -101,7 +103,13 @@ module.exports = {
         next(e);
     }
 
-  }
+  },
+
+  getAPIKey(req, res, next) {
+    console.log('this is working')
+    res.locals.apikey = process.env.API_KEY;
+    next();
+  },
 
 };
 

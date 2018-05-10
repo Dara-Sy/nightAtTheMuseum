@@ -12,7 +12,7 @@ app.route('/register')
     authService.generatePassword,
     authService.registerUser,
     authService.authenticate,
-    resHandler.tester
+    resHandler.handleUserLogin
   )
 
 app.route('/login')

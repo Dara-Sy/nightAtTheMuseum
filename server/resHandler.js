@@ -14,6 +14,10 @@ module.exports = {
     res.json(res.locals.museum || res.locals.museums);
   },
 
+  sendAPI(req, res) {
+    res.json(res.locals.apikey);
+  },
+
   handleDel(req,res) {
     res.status(204).end();
   },

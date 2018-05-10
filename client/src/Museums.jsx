@@ -1,27 +1,35 @@
 import React from 'react';
 
-
 class Museums extends React.Component {
   constructor(props){
     super(props);
     this.state ={
-      museum: [],
       comments: []
-
     }
   }
 
-  // Will fetch museum info from API(?) to render
-  // individual museum page
   componentWillMount(){
-    fetch(`/museum/:museumid`)
-    .then(response => response.json())
-      .then(data => {
-        let Muse = this.state.museum.slice()
-          Muse.forEach(d => {
+    const proxy = 'https://accesscontrolalloworiginall.herokuapp.com/';
+    // fetch(`/api/museum/1`)
+    // .then(response => response.json())
+    //   .then(data => {
+    //     if(data.length === 0) {
+    //       console.log('no data returned')
+    //     } else {
+          // fetch(`/api/secret`)
+          // .then(response => response.json())
+          //   .then(apikey => {
+              // const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${apikey}`;
 
-          })
-      })
+              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+New+York&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`
+              fetch(url)
+                .then( response => response.json())
+                  .then(data2 => {
+                    console.log('this is data ', data2)
+              })
+            // })
+      //   }
+      // })
 
   }
 
@@ -34,19 +42,14 @@ class Museums extends React.Component {
   render(props){
     return(
       <table className="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th></th>
-      <td></td>
-    </tr>
-    </tbody>
-  </table>
+        <tbody>
+          <tr>
+            <td>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
       )
   }
 

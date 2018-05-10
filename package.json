@@ -8,6 +8,7 @@
   "private": true,
   "dependencies": {
     "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",

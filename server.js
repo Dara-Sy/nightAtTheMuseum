@@ -2,6 +2,7 @@ require('dotenv').config();
 const express    = require('express');
 const logger     = require('morgan');
 const path       = require('path');
+const bodyParser = require('body-parser');
 
 const tokenService = require('./auth/TokenService');
 const authRouter = require('./auth/AuthRouter');
@@ -16,11 +17,13 @@ const PORT = process.env.PORT || 3001;
 
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(tokenService.receiveToken);
 
-app.use('/', authRouter);
-
 app.use('/api', museumRouter);
+
+app.use('/', authRouter);
 
 // app.use((err, req, res, next) => {
 //   res.status(500).send('Something broke!');
