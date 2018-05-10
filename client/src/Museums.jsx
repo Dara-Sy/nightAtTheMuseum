@@ -14,6 +14,8 @@ class Museums extends React.Component {
   // Will fetch museum info from API(?) to render
   // individual museum page
   componentWillMount(){
+    let url =
+    fetch(url)
     fetch(`/museum/:museumid`)
     .then(response => response.json())
       .then(data => {
@@ -30,6 +32,7 @@ class Museums extends React.Component {
   addFave(){
 
   }
+
 // Bulma template for table
   render(props){
     return(
