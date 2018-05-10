@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 
 class UserProfile extends React.Component {
@@ -28,8 +28,7 @@ class UserProfile extends React.Component {
             }
           })
         this.setState({
-          museum: FaveList,
-          user: {}
+          museum: FaveList
         })
       })
       .catch(err => {
@@ -42,7 +41,7 @@ class UserProfile extends React.Component {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === data[i].museum_id) {
+      if(d.museum_id === fave.museum_id) {
         index = i;
       }
     })
@@ -63,20 +62,38 @@ class UserProfile extends React.Component {
     .then(response => response.json())
       .then((response) => {
         this.setState({
-          museum: newFaves,
-          user: {}
+          museum: newFaves
         })
       })
   }
 
 
-
+  // Bulma template for table
+  // checking if fave museum id = index of array museum id
+  // and show results in table
   render(props){
+    const favorites = this.props.FaveList.map((fave, i) => {
+      if(fave.museum_id === i.museum_id)
+    })
     return(
-      const favorites = this.props.state
-      <div>
-
-      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Favorites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{favorites}</th>
+            <span className="delbtn">
+              <a className="icon" onClick={() =>
+                this.props.delFaves(fave)}>
+                  <i className="fas fa-times-circle"></i>
+              </a>
+            </span>
+          </tr>
+        </tbody>
+      </table>
       )
   }
 }
