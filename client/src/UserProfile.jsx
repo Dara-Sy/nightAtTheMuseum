@@ -85,6 +85,12 @@ class UserProfile extends React.Component {
         <tbody>
           <tr>
             <th>{favorites}</th>
+            <span className="delbtn">
+              <a className="icon" onClick={() =>
+                this.props.delFaves(fave)}>
+                  <i className="fas fa-times-circle"></i>
+              </a>
+            </span>
           </tr>
         </tbody>
       </table>
