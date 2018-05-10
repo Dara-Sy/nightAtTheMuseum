@@ -1,6 +1,6 @@
 import React  from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import UserProfile from './UserProfile';
 import Register from './Register';
 import Login from './Login';
 import './App.css';
@@ -19,7 +19,7 @@ export default class App extends React.Component {
         <main>
           <Switch>
             <Route path="/:userid/faves/:favesid" />
-            <Route path="/:userid/faves" />
+            <Route path="/:userid/faves" component={UserProfile}/>
             <Route path="/search" />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />

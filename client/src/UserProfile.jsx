@@ -15,8 +15,8 @@ class UserProfile extends React.Component {
 
 
   // fetch all the users favorite museums
-  componentWillMount(user){
-    fetch(`/${user.user_id}/faves/`)
+  componentWillMount(){
+    fetch(`/${user}/faves/`)
     .then(response => response.json())
       .then(data => {
         let FaveList = this.state.museum.slice()
@@ -32,16 +32,16 @@ class UserProfile extends React.Component {
         })
       })
       .catch(err => {
-        next(err)
+        console.log(err)
       })
   }
 
   // delete a favorite
-  delFaves(fave) {
+  delFaves(user) {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === fave.museum_id) {
+      if(d.museum_id === user.museum_id) {
         index = i;
       }
     })
@@ -51,7 +51,7 @@ class UserProfile extends React.Component {
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example'
+        'user-agent': 'Mozilla/4.0 MDN Example',
         'content-type': 'application/json'
       },
       method: 'DELETE',
@@ -73,18 +73,12 @@ class UserProfile extends React.Component {
   // and show results in table
   render(props){
     const favorites = this.props.FaveList.map((fave, i) => {
-      if(fave.museum_id === i.museum_id)
-    })
+      if(fave.museum_id === i.museum_id){
     return(
       <table className="table">
-        <thead>
-          <tr>
-            <th>Favorites</th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <th>{favorites}</th>
+            <th></th>
             <span className="delbtn">
               <a className="icon" onClick={() =>
                 this.props.delFaves(fave)}>
@@ -94,6 +88,18 @@ class UserProfile extends React.Component {
           </tr>
         </tbody>
       </table>
+      )
+  }
+      })
+    return(
+      <div>
+        <thead>
+          <tr>
+            <th>Favorites</th>
+          </tr>
+        </thead>
+        {favorites}
+      </div>
       )
   }
 }
