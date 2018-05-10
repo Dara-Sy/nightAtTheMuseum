@@ -4,8 +4,9 @@ module.exports = {
   async getAllFaves(req, res, next) {
     // hit the db to get favorites list
     try {
-      req.body.favesid = req.params.favesid;
-      res.local.museums = await museumDB.getAllFaves(req.body.favesid);
+      // req.body.favesid = req.params.favesid;
+      // Where are you getting faves id from?
+      res.local.museums = await museumDB.getAllFaves(parseInt(req.params.userid));
       next();
     } catch (e) {
       next(e);
@@ -17,13 +18,7 @@ module.exports = {
   async getFave(req, res, next) {
     // checks db to see if you favorited this museum
     try {
-      let req = {
-        params: {
-          user_id: 1,
-          comments: '',
-          rating: 0,
-        }
-      res.locals.museum = await museumDB.getOne(req.params);
+      res.locals.museum = await museumDB.getOneFave(parseInt(req.params.museumid));
       next();
     } catch (e) {
       next(e);
@@ -33,9 +28,7 @@ module.exports = {
   async createComment(req, res, next) {
     // hits db to add comment to museum (faves table)
     try {
-      let theData = req.body;
-      theData.commentid = req.session.user.commentid;
-      res.locals.museum = await museumDB.create(theData.commentid);
+      res.locals.museum = await museumDB.createComment(req.body);
       next();
     } catch (e) {
       next(e);
@@ -45,29 +38,17 @@ module.exports = {
   async updateComment(req, res, next) {
     // hit the db to change comment
     try {
-      let req = {
-        params: {
-          comment_id: 1,
-          comments: '',
-          rating: 0,
-        }
-      res.locals.museum = await museumDB.updateOne(req.params);
+      res.locals.museum = await museumDB.updateComments(req.body);
       next();
     } catch (e) {
       next(e);
     }
   },
 
-  async delFave(req, res, next) {
+  async delFaves(req, res, next) {
     // hit the db to unfavorite something
     try {
-      // passing 1 thing with 2 keys
-      let req = {
-        params: {
-          user_id: 1,
-          faves_id: 'favesid',
-        }
-      }
+      // passing 1 thing with 2 keys userid and favesid
       res.locals.museum = await museumDB.destroy(req.params);
       next();
     } catch (e) {
@@ -83,20 +64,13 @@ module.exports = {
         // if return back data
         // conditional stmt inside the then
         // console.log("this is req.params:", req.params);
-       data = await museumDB.getOneFave(2)
-       console.log("this is data", data);
-          // let res.locals.museum = d;
-          // show the favorites
-
-          // res.send('Is it a Fave:' + data.favesid)
-          next();
-        })
-          .catch (e => {
-            next(e);
-        })
-
+      res.locals.museum = await museumDB.getOneFave(req.body.museum_id);
+        next();
+    } catch (e) {
+        next(e);
     }
-  },
+
+  }
 
 };
 

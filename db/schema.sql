@@ -15,16 +15,17 @@ CREATE TABLE users (
   lname TEXT
 );
 
-CREATE TABLE faves (
-  faves_id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(user_id),
-  museum_id VARCHAR(255)
-);
+-- CREATE TABLE faves (
+--   faves_id SERIAL PRIMARY KEY,
+--   user_id INTEGER REFERENCES users(user_id),
+--   museum_id VARCHAR(255)
+-- );
 
 CREATE TABLE comments (
   comments_id SERIAL PRIMARY KEY,
   museum_id VARCHAR(255),
   comments TEXT,
   rating INTEGER DEFAULT 0,
-  user_id INTEGER REFERENCES users(user_id)
+  user_id INTEGER REFERENCES users(user_id),
+  isfave BOOLEAN DEFAULT false
 );
