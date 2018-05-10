@@ -77,7 +77,7 @@ class UserProfile extends React.Component {
     return(
         <tbody>
           <tr>
-            <th></th>
+            <th>{fave.name}</th>
             <span className="delbtn">
               <a className="icon" onClick={() =>
                 this.props.delFaves(fave)}>
