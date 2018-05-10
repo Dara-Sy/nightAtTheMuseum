@@ -68,34 +68,24 @@ class UserProfile extends React.Component {
   }
 
 
-
+  // Bulma template for table
   render(props){
+    const favorites = this.props.FaveList.map((fave, i) => {
+      if()
+    })
     return(
-      const favorites = this.props.state
-      <table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    </tbody>
-  </table>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Favorites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>{favorites}</th>
+          </tr>
+        </tbody>
+      </table>
       )
   }
 }

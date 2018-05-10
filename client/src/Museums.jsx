@@ -13,10 +13,13 @@ class Museums extends React.Component {
 
 
   componentWillMount(){
-    fetch(``)
+    fetch(`/museum/:museumid`)
     .then(response => response.json())
       .then(data => {
+        let Muse = this.state.museum.slice()
+          Muse.forEach(d => {
 
+          })
       })
 
   }
@@ -29,14 +32,9 @@ class Museums extends React.Component {
 // Bulma template for table
   render(props){
     return(
-      <table class="table">
+      <table className="table">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -44,11 +42,6 @@ class Museums extends React.Component {
   <tbody>
     <tr>
       <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
     </tbody>
