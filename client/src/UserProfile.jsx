@@ -69,7 +69,7 @@ class UserProfile extends React.Component {
 
 
   // Bulma template for table
-  // checking if fave id = index of array museum id
+  // checking if fave museum id = index of array museum id
   // and show results in table
   render(props){
     const favorites = this.props.FaveList.map((fave, i) => {
