@@ -1,6 +1,30 @@
 const museumDB = require('./models');
 
 module.exports = {
+
+  // we did not review adding user function
+  // so I commented it out for now
+
+  // async addUser(req, res, next) {
+  //   try{
+  //     res.locals.user = await museumDB.addUser();
+  //     res.locals.user.password_digest = '';
+  //     next();
+  //   } catch (e) {
+  //     next(e);
+  //   }
+  // },
+
+  async getUser(req, res, next) {
+    try{
+      res.locals.user = await museumDB.findOneUser(res.locals.payload.username);
+      res.locals.user.password_digest = '';
+      next();
+    } catch (e) {
+      next(e);
+    }
+  },
+
   async getAllFaves(req, res, next) {
     // hit the db to get favorites list
     try {
@@ -15,6 +39,7 @@ module.exports = {
 
   // user_id, comment, rating
 
+
   async getFave(req, res, next) {
     // checks db to see if you favorited this museum
     try {
@@ -25,6 +50,10 @@ module.exports = {
     }
   },
 
+
+  // POST with route '/museum/:museumid'
+  // adding a comment to museum
+  // adds to faves table
   async createComment(req, res, next) {
     // hits db to add comment to museum (faves table)
     try {
@@ -35,6 +64,8 @@ module.exports = {
     }
   },
 
+  // the route is '/:userid/faves'
+  // editing a comment
   async updateComment(req, res, next) {
     // hit the db to change comment
     try {
@@ -133,5 +164,6 @@ module.exports = {
   //     })
   //   }
   // },
+
 
 

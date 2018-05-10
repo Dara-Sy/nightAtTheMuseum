@@ -11,6 +11,7 @@ module.exports = function museumDB(db) {
         `, data);
     },
 
+<<<<<<< HEAD
     findOneUser(username) {
       return db.any(`
         SELECT * FROM users
@@ -48,6 +49,7 @@ module.exports = function museumDB(db) {
             `, favesid);
     },
 
+
     getComments(user_id) {
       return DB.many(`
         SELECT
@@ -79,6 +81,45 @@ module.exports = function museumDB(db) {
      RETURNING *
              `, data);
     },
+  // adding comments to museum
+  // adds to faves table
+  // passing 1 thing, data
+  create(museumid, data) {
+    return db.one(`
+      INSERT INTO comments (
+        museum_id,
+        comments,
+        rating,
+        user_id,
+        isfave)
+
+      VALUES (
+        $1,
+        $/comments/,
+        $/rating/,
+        $/user_id/,
+        $/isfave/)
+
+      `, [museumid, data]);
+  },
+
+// this says updateComments
+// but my controller function has updateComment
+// passing 1 thing, data
+  updateComments(data) {
+    return db.one(`
+      UPDATE comments
+         SET
+   museum_id = $1,
+    comments = $/comments/,
+      rating = $/rating/
+     user_id = $/user_id/,
+      isfave = $/isfave/
+
+     WHERE faves_id = $/faves_id/
+   RETURNING *
+           `, data);
+>>>>>>> eae9b59c82318537b09732f33c7768f50b5bc64d
 
   };
 }
