@@ -49,12 +49,9 @@ newSearch(e) {
 
 // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 getData(e) {
-  // console.log('We are getting data:' + this.state.museum)
+
   e.preventDefault();
-  // let zipcode = this.state.zipcode
-  // let museum = this.state.museum
-  // fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.730610, -73.935242&radius=1500&type=museum&keyword=&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
-  // fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${process.env.API_KEY}`)
+
  let city = this.state.city;
   city = city.replace(" ", "+");
   console.log(`i am `, city)
@@ -62,17 +59,13 @@ getData(e) {
   fetch(`/api/secret`)
     .then(response => response.json())
       .then(apikey => {
-        console.log('I have a key', apikey)
         fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${city}&key=${apikey}`)
         .then(res => res.json())
           .then(data => {
-            console.log(`I get data`, data.results)
             this.props.changeMuseum(data.results)
-            console.log('this is', this.props.museumall)
-            const toRender = this.props.museumall.map(element => {
-                console.log(element)
-                return ( <section>
-                          <div>{element.icon}</div>
+            const toRender = this.props.museumall.map((element, i) => {
+                return ( <section key={i}>
+                          <img src={element.icon}/>
                           <div>
                             <h2>{element.name}</h2>
                             <h2>{element.formatted_address}</h2>
