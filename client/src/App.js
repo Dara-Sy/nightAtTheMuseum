@@ -101,7 +101,7 @@ export default class App extends React.Component {
             <Route path="/" />
           </Switch>
         </main>
-        <h1>Hello Good Sir!</h1>
+        <h4>Made by the best DALP you'll ever meet</h4>
       </div>
     );
   }
