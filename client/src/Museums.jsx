@@ -9,27 +9,24 @@ class Museums extends React.Component {
   }
 
   componentWillMount(){
-    const proxy = 'https://accesscontrolalloworiginall.herokuapp.com/';
-    // fetch(`/api/museum/1`)
-    // .then(response => response.json())
-    //   .then(data => {
-    //     if(data.length === 0) {
-    //       console.log('no data returned')
-    //     } else {
-          // fetch(`/api/secret`)
-          // .then(response => response.json())
-          //   .then(apikey => {
-              // const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${apikey}`;
-
-              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+New+York&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`
+    fetch(`/api/museum/1`)
+    .then(response => response.json())
+      .then(data => {
+        if(data.length === 0) {
+          console.log('no data returned')
+        } else {
+          fetch(`/api/secret`)
+          .then(response => response.json())
+            .then(apikey => {
+              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data.museum_location}&key=${apikey}`
               fetch(url)
                 .then( response => response.json())
                   .then(data2 => {
                     console.log('this is data ', data2)
               })
-            // })
-      //   }
-      // })
+            })
+        }
+      })
 
   }
 
