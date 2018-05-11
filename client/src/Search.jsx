@@ -4,42 +4,25 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      museums: [],
-      zipcode: '',
+      // museums: [],
+      // zipcode: '',
       city: '',
-      name: '',
+      results: '',
+      // name: '',
     }
 
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
-    this.renderMuseums = this.renderMuseums.bind(this);
+    // this.renderMuseums = this.renderMuseums.bind(this);
   }
 
-  //fetch all museuems in search!!
-  // componentWillMount() {
-  //   fetch(`/search`)
-  //   .then(response => response.json())
-  //     .then(data => {
-  //       let museumSearch = this.state.museum.slice()
-  //         museumSearch.forEach(d => {
-  //           for(let i = 0; i < data.length; i++){
-  //             //do we need an if statement??
-  //             //loop to add gold star if Faved
-  //             //
-  //           }
-  //         })
-  //       this.setState({
-  //         museum: museumSearch
-  //       })
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
+
+
 newSearch(e) {
   this.setState({
     city: e.target.value
   });
+  console.log(`I am what yu search`, this.state.city)
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!
@@ -63,26 +46,40 @@ newSearch(e) {
 // You need to nest this fetch call into a fetch call that
 // goes to the server route called /api/secret. When you
 // get the data back, it will be the APIKEY
+
+// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 getData(e) {
-  // console.log('We are getting data:' + this.state.museum)
+
   e.preventDefault();
-  // let zipcode = this.state.zipcode
-  // let museum = this.state.museum
-  // fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.730610, -73.935242&radius=1500&type=museum&keyword=&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
-  // fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${process.env.API_KEY}`)
-  fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+new+york&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
-  .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      console.log("these are names, " + data.results[0].name);
-      this.setState({
-        museums: data.results,
-        name: data.name,
+
+ let city = this.state.city;
+  city = city.replace(" ", "+");
+  console.log(`i am `, city)
+
+  fetch(`/api/secret`)
+    .then(response => response.json())
+      .then(apikey => {
+        fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${city}&key=${apikey}`)
+        .then(res => res.json())
+          .then(data => {
+            this.props.changeMuseum(data.results)
+            const toRender = this.props.museumall.map((element, i) => {
+                return ( <section key={i}>
+                          <img src={element.icon}/>
+                          <div>
+                            <h2>{element.name}</h2>
+                            <h2>{element.formatted_address}</h2>
+                          </div>
+                        </section>);
+          })
+              this.setState({
+              results: toRender
+                })
       })
+          .catch(err =>
+            console.log(err)
+          )
     })
-    .catch(err =>
-      console.log(err)
-    )
 }
 
 // !!!!!!!!!!!!!!!
@@ -94,18 +91,26 @@ getData(e) {
 // thumbnail that the API provides.
 // Make the links clickable and make them send people
 // to /museums/{the museum id}
-renderMuseums(){
-  //.this.state.map
-  return this.state.museums.map(d => {
-    return ( <li>{d.name}</li>)
-  })
-}
+// renderMuseums(){
+//   //.this.state.map
+//   return this.props.museumall.map(element => {
+//     return ( <section>
+//               <div>{element.icon}</div>
+//               <div>
+//                 <h2>{element.name}</h2>
+//                 <h2>{element.formatted_address}</h2>
+//               </div>
+//             </section>)
+//   })
+// }
 
 // To have an easier time styling later, please change
 // the ul to a section tag.
 // One of you, please start thinking about how the site
 // should look.
 render(props) {
+
+
   return(
     <div className="searchContainer">
       <h3>Search</h3>
@@ -116,9 +121,9 @@ render(props) {
        onChange={this.newSearch}
        />
        <button onClick={this.getData}>Find Museums</button>
-       <ul>
-       {this.renderMuseums()}
-       </ul>
+       <div>
+       {this.state.results}
+       </div>
     </div>
     )
 }

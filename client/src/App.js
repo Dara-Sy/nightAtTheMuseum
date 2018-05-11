@@ -14,11 +14,13 @@ export default class App extends React.Component {
       museumAll: [],
       faves: []
     };
+    this.affectMuseumAll = this.affectMuseumAll.bind(this);
   }
 
   affectMuseumAll(newArray) {
+    let array = newArray.slice()
     this.setState({
-      museumAll: newArray,
+      museumAll: array,
     })
   }
 
