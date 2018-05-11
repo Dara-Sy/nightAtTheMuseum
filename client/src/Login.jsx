@@ -37,7 +37,7 @@ export default class Login extends React.Component {
 
   render(props) {
     return (
-      <div className="logincontainer">
+      <div className="logInContainer">
         <tbody>
           <tr>
             <td>
@@ -45,7 +45,7 @@ export default class Login extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="text"
                 placeholder="username"
                 ref="username"
@@ -60,7 +60,7 @@ export default class Login extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="password"
                 placeholder="password"
                 ref="password"
@@ -70,7 +70,7 @@ export default class Login extends React.Component {
             </td>
           </tr>
         </tbody>
-        <div className="regbutton">
+        <div className="regButton">
           <button
             type="submit"
             onClick={this.submitReg}

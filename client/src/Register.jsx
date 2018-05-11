@@ -50,7 +50,7 @@ export default class Register extends React.Component {
 
   render(props) {
     return(
-      <div className="logincontainer">
+      <div className="logInContainer">
         <tbody>
           <tr>
             <td>
@@ -58,7 +58,7 @@ export default class Register extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="text"
                 placeholder="first name"
                 ref="fname"
@@ -73,7 +73,7 @@ export default class Register extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="text"
                 placeholder="last name"
                 ref="lname"
@@ -88,7 +88,7 @@ export default class Register extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="text"
                 placeholder="username"
                 ref="username"
@@ -103,7 +103,7 @@ export default class Register extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="password"
                 placeholder="password"
                 ref="password"
@@ -118,7 +118,7 @@ export default class Register extends React.Component {
             </td>
             <td>
               <input
-                className="reginput"
+                className="regInput"
                 type="password"
                 placeholder="enter password again"
                 ref="password2"
@@ -131,7 +131,7 @@ export default class Register extends React.Component {
             </td>
           </tr>
         </tbody>
-        <div className="regbutton">
+        <div className="regButton">
           <button
             type="submit"
             onClick={this.submitReg}
