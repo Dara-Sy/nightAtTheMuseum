@@ -70,7 +70,7 @@ getData(e) {
   // let museum = this.state.museum
   // fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.730610, -73.935242&radius=1500&type=museum&keyword=&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
   // fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${process.env.API_KEY}`)
-  fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+new+york&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
+  fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+new+york&key=AIzaSyAffC3lLmIkfN33zhtCmtkJwH7k6TP9EnE`)
   .then(res => res.json())
     .then(data => {
       console.log(data);

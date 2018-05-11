@@ -1,15 +1,10 @@
 import React from 'react';
 
 
-class UserProfile extends React.Component {
+class UserProfile extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      museum: [],
-      user: {}
-    };
-
-    this.delFaves = this.delFaves.bind(this);
+    this.state = {};
 
   }
 
@@ -28,20 +23,19 @@ class UserProfile extends React.Component {
   // {() => this.props.updateFaves(newArray)}
 
   componentWillMount(){
-    fetch(`/:userid/faves/`)
+    fetch(`api/:userid/faves/`)
     .then(response => response.json())
       .then(data => {
-        let FaveList = this.state.museum.slice()
-          FaveList.forEach(d => {
+        let FaveList = this.props.museumall.slice()
+        let newArray =  FaveList.forEach(d => {
             for(let i = 0; i < data.length; i++){
               if(d.museum_id === data[i].museum_id){
-                d.fave = 'true'
+                d.isfave = 'true'
               }
             }
           })
-        this.setState({
-          museum: FaveList
-        })
+          .then( () => this.props.changeMuseum(newArray)
+        )
       })
       .catch(err => {
         console.log(err)
@@ -56,42 +50,15 @@ class UserProfile extends React.Component {
   // If you delete this method since I moved it to App.js?
   // if you need to use this method, you can refer to it
   // like this {() => this.props.delFaves(user)}
-  delFaves(user) {
-    let newFaves = this.state.museum.slice();
-    let index = 0;
-    newFaves.forEach((d, i) => {
-      if(d.museum_id === user.museum_id) {
-        index = i;
-      }
-    })
-    let data = newFaves.splice(index, 1)
-    fetch(`/${user.user_id}/faves/:faves_id`, {
-      body: JSON.stringify(data),
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
-        'content-type': 'application/json'
-      },
-      method: 'DELETE',
-      mode: 'cors',
-      redirect: 'follow',
-      referrer: 'no-referrer',
-    })
-    .then(response => response.json())
-      .then((response) => {
-        this.setState({
-          museum: newFaves
-        })
-      })
-  }
+
 
 
   // Bulma template for table
   // checking if fave museum id = index of array museum id
   // and show results in table
-  render(props){
-    const favorites = this.props.museum.map((fave, i) => {
+  render(){
+    let user = this.props.updateFaves
+    const favorites = this.props.favesall.map((fave, i) => {
       if(fave.museum_id === i.museum_id){
     return(
         <tbody>
@@ -102,7 +69,7 @@ class UserProfile extends React.Component {
                 // You don't need to say props since the function is in here.
                 // you can just say this.delFaves
                 // Also, see my note about the delFaves
-                this.props.delFaves(fave)}>
+                this.delFaves(user)}>
                   <i className="fas fa-times-circle"></i>
               </a>
             </span>
