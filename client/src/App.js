@@ -16,6 +16,48 @@ export default class App extends React.Component {
     };
   }
 
+  affectMuseumAll(newArray) {
+    this.setState({
+      museumAll: newArray,
+    })
+  }
+
+  affectFavesList(newArray) {
+    this.setState({
+      faves: newArray,
+    })
+  }
+
+  delFaves(user) {
+    let newFaves = this.state.museum.slice();
+    let index = 0;
+    newFaves.forEach((d, i) => {
+      if(d.museum_id === user.museum_id) {
+        index = i;
+      }
+    })
+    let data = newFaves.splice(index, 1)
+    fetch(`/${user.user_id}/faves/:faves_id`, {
+      body: JSON.stringify(data),
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'user-agent': 'Mozilla/4.0 MDN Example',
+        'content-type': 'application/json'
+      },
+      method: 'DELETE',
+      mode: 'cors',
+      redirect: 'follow',
+      referrer: 'no-referrer',
+    })
+    .then(response => response.json())
+      .then((response) => {
+        this.setState({
+          museum: newFaves
+        })
+      })
+  }
+
   render() {
     return (
       <div>
@@ -23,9 +65,37 @@ export default class App extends React.Component {
           <Switch>
             <Route
               path="/museum/:museumid"
-              render={() => (<Museums props={this.state.museum} />)} />
-            <Route path="/:userid/faves" component={UserProfile}/>
-            <Route path="/search" component={Search} />
+              render={() => (
+                <Museums
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.updateFaves}
+                  delFaves={this.delFaves}
+                />)}
+            />
+            <Route
+              path="/:userid/faves"
+              render={() => (
+                <UserProfile
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.updateFaves}
+                  delFaves={this.delFaves}
+                />)}
+            />
+            <Route
+              path="/search"
+              render={() => (
+                <Search
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.updateFaves}
+                  delFaves={this.delFaves}
+                />)}
+            />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/" />

@@ -42,6 +42,27 @@ newSearch(e) {
   });
 }
 
+// !!!!!!!!!!!!!!!!!!!!!!
+// Don't store the museum state in here. If you need
+// the list itself but don't need to add or remove
+// anything then use this.props.museumall
+// If you need to add things to the museum state, then
+// do something like this...
+// {() => this.props.changeMuseum(newArray)}
+
+// If you need to use the things in the faves array,
+// use this.props.favesall.
+// If you need to update/change the faves array,
+// do this...
+// {() => this.props.updateFaves(newArray)}
+
+// If you need to delete a fave, you can do this
+// {() => this.props.delFaves()}
+
+// !!!!!!!!!
+// You need to nest this fetch call into a fetch call that
+// goes to the server route called /api/secret. When you
+// get the data back, it will be the APIKEY
 getData(e) {
   // console.log('We are getting data:' + this.state.museum)
   e.preventDefault();
@@ -63,6 +84,16 @@ getData(e) {
       console.log(err)
     )
 }
+
+// !!!!!!!!!!!!!!!
+// I think if you changed how the items are rendered
+// like changing it from lis to divs, we will have
+// an easier time styling it later. Also, the fields
+// that you will want to show are museum name,
+// address, is it currently open?, and there is a
+// thumbnail that the API provides.
+// Make the links clickable and make them send people
+// to /museums/{the museum id}
 renderMuseums(){
   //.this.state.map
   return this.state.museums.map(d => {
@@ -70,7 +101,10 @@ renderMuseums(){
   })
 }
 
-
+// To have an easier time styling later, please change
+// the ul to a section tag.
+// One of you, please start thinking about how the site
+// should look.
 render(props) {
   return(
     <div className="searchContainer">
