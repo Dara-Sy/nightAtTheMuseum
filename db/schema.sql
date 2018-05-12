@@ -15,11 +15,11 @@ CREATE TABLE users (
   lname TEXT
 );
 
--- CREATE TABLE faves (
---   faves_id SERIAL PRIMARY KEY,
---   user_id INTEGER REFERENCES users(user_id),
---   museum_id VARCHAR(255)
--- );
+CREATE TABLE favemuseum (
+  museum_id TEXT PRIMARY KEY,
+  name TEXT,
+  address TEXT
+);
 
 CREATE TABLE comments (
   comments_id SERIAL PRIMARY KEY,

@@ -15,6 +15,7 @@ export default class App extends React.Component {
       faves: []
     };
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
+    this.affectFavesList = this.affectFavesList.bind(this);
   }
 
   affectMuseumAll(newArray) {
@@ -83,7 +84,7 @@ export default class App extends React.Component {
                   museumall={this.state.museumAll}
                   changeMuseum={this.affectMuseumAll}
                   favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
+                  updateFaves={this.affectFavesList}
                   delFaves={this.delFaves}
                 />)}
             />
