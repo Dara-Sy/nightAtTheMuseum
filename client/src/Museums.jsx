@@ -30,7 +30,7 @@ class Museums extends React.Component {
         } else {
           let poop = '';
           for(let i = 0; i < data[0].rating; i++) {
-            poop += 💩;
+            poop +=   '&#57434';
           }
           this.setState({
             userdata: data[0],
