@@ -27,7 +27,7 @@ class UserProfile extends React.Component{
     // get call from comment table to return isfave and comments
     // to make sure it can compare isfave is true or false
   componentWillMount(){
-    fetch(`api/1/faves/`)
+    fetch(`api/:userid/faves/`)
     .then(response => response.json())
       .then(data => {
         let FaveList = this.props.updateFaves.slice()
