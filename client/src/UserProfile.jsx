@@ -31,7 +31,7 @@ class UserProfile extends React.Component{
     .then(response => response.json())
       .then(data => {
         let FaveList = this.props.updateFaves.slice()
-        let newArray =  FaveList.forEach(d => {
+        FaveList.forEach(d => {
             for(let i = 0; i < data.length; i++){
               if(d.museum_id === data[i].museum_id){
                 d.isfave = 'true'
@@ -65,7 +65,7 @@ class UserProfile extends React.Component{
     return(
         <tbody>
           <tr>
-            <th>{fave.museum_id}</th>
+            <th>{fave.name}</th>
             <span className="delbtn">
               <a className="icon" onClick={() =>
                 // You don't need to say props since the function is in here.
