@@ -27,15 +27,15 @@ class Museums extends React.Component {
       .then(data => {
         if(data.length === 0) {
           console.log('no data returned')
-        } else {
-          let poop = '';
-          for(let i = 0; i < data[0].rating; i++) {
-            poop += 💩;
-          }
-          this.setState({
-            userdata: data[0],
-            rating: poop
-          })
+        // } else {
+        //   let poop = '';
+        //   for(let i = 0; i < data[0].rating; i++) {
+        //     poop += 💩;
+        //   }
+          // this.setState({
+          //   userdata: data[0],
+          //   rating: poop
+          // })
   //         fetch(`/api/secret`)
   //         .then(response => response.json())
   //           .then(apikey => {
