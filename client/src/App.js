@@ -72,7 +72,7 @@ export default class App extends React.Component {
                   museumall={this.state.museumAll}
                   changeMuseum={this.affectMuseumAll}
                   favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
+                  updateFaves={this.affectFavesList}
                   delFaves={this.delFaves}
                 />)}
             />
@@ -83,7 +83,7 @@ export default class App extends React.Component {
                   museumall={this.state.museumAll}
                   changeMuseum={this.affectMuseumAll}
                   favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
+                  updateFaves={this.affectFavesList}
                   delFaves={this.delFaves}
                 />)}
             />
@@ -94,7 +94,7 @@ export default class App extends React.Component {
                   museumall={this.state.museumAll}
                   changeMuseum={this.affectMuseumAll}
                   favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
+                  updateFaves={this.affectFavesList}
                   delFaves={this.delFaves}
                 />)}
             />

@@ -20,13 +20,15 @@ module.exports = {
   getAllFaves(userid) {
     return db.many(`
       SELECT
-        users.usser_id,
+        users.user_id,
         users.username,
-        faves.faves_id,
-        faves.museum_id
+        comments.*,
+        favemuseum.*
       FROM users
-      JOIN faves
-        ON (users.user_id = faves.user_id)
+      JOIN comments
+        ON (users.user_id = comments.user_id)
+      JOIN favemuseum
+        ON (comments.museum_id = favemuseum.museum_id)
       WHERE users.user_id = $1
       `, userid);
   },
@@ -36,20 +38,28 @@ module.exports = {
       SELECT *
         FROM comments
        WHERE comments.comments_id = $1
+        JOIN favemuseum
+          ON favemuseum.museum_id = comments.museum_id
         `, museum_id);
   },
 
-  destroy(user_id, favesid) {
+  destroyMuseum(museumid) {
     return db.none(`
       DELETE
-        FROM faves
-       WHERE faves_id = $2,
+        FROM favemuseum
+       WHERE museum_id = $1,
           `, favesid);
   },
 
+  destroyComments(commentsid) {
+    return db.none(`
+      DELETE FROM comments
+      WHERE comments_id = $1
+      `, commentsid)
+  },
 
   getComments(user_id) {
-    return DB.many(`
+    return db.many(`
       SELECT
              museum_id,
              comments,

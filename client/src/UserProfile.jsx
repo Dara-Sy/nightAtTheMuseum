@@ -22,6 +22,10 @@ class UserProfile extends React.Component{
   // do this...
   // {() => this.props.updateFaves(newArray)}
 
+
+
+    // get call from comment table to return isfave and comments
+    // to make sure it can compare isfave is true or false
   componentWillMount(){
     fetch(`api/:userid/faves/`)
     .then(response => response.json())
@@ -63,7 +67,7 @@ class UserProfile extends React.Component{
     return(
         <tbody>
           <tr>
-            <th>{fave.name}</th>
+            <th>{fave.museum_id}</th>
             <span className="delbtn">
               <a className="icon" onClick={() =>
                 // You don't need to say props since the function is in here.

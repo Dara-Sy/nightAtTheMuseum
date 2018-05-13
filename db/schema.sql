@@ -26,7 +26,13 @@ CREATE TABLE comments (
   museum_id VARCHAR(255),
   museum_location TEXT,
   comments TEXT,
-  rating INTEGER DEFAULT 0,
+  rating TEXT,
   user_id INTEGER REFERENCES users(user_id),
   isfave BOOLEAN DEFAULT false
+);
+
+CREATE TABLE favemuseum (
+museum_id TEXT PRIMARY KEY,
+name TEXT,
+address TEXT
 );
