@@ -45,7 +45,7 @@ export default class Login extends React.Component {
             </td>
             <td>
               <input
-                className="regInput"
+                className="reginput"
                 type="text"
                 placeholder="username"
                 ref="username"
@@ -60,7 +60,7 @@ export default class Login extends React.Component {
             </td>
             <td>
               <input
-                className="regInput"
+                className="reginput"
                 type="password"
                 placeholder="password"
                 ref="password"
@@ -70,8 +70,9 @@ export default class Login extends React.Component {
             </td>
           </tr>
         </tbody>
-        <div className="regButton">
+        <div className="logInButton">
           <button
+            className="button"
             type="submit"
             onClick={this.submitReg}
           >Submit</button>
