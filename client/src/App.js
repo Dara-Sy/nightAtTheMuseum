@@ -103,7 +103,17 @@ export default class App extends React.Component {
             <Route path="/" />
           </Switch>
         </main>
-        <h4>Made by the best DALP you'll ever meet</h4>
+        <div className="Nav">
+          <h1>Night At The Museum</h1>
+
+          <a className="navlinks" href="/login"> Home </a>
+          <a className="navlinks" href="/search"> Search </a>
+
+        </div>
+
+        <div className="Footer">
+          <h4> © Made by the best DALP you'll ever meet</h4>
+        </div>
       </div>
     );
   }

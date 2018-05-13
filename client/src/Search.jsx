@@ -64,12 +64,16 @@ getData(e) {
           .then(data => {
             this.props.changeMuseum(data.results)
             const toRender = this.props.museumall.map((element, i) => {
-                return ( <section key={i}>
-                          <img src={element.icon}/>
-                          <div>
+                return ( <section className="searchResults" key={i}>
+
+                          <img src={element.icon} />
+
+                            <div className="searchRes">
                             <h2>{element.name}</h2>
-                            <h2>{element.formatted_address}</h2>
-                          </div>
+
+                            <h2 className="local">{element.formatted_address}</h2>
+                            </div>
+
                         </section>);
           })
               this.setState({
@@ -112,19 +116,21 @@ render(props) {
 
 
   return(
-    <div className="searchContainer">
+    <section className="searchContainer">
       <h3>Search</h3>
-      <input
+      <input className="searchInput"
        type="text"
        name="zipcode"
        placeholder="searchbar"
        onChange={this.newSearch}
        />
-       <button onClick={this.getData}>Find Museums</button>
-       <div>
+       <button className="button" onClick={this.getData}>Find Museums</button>
+       <div className="">
+       <a href="/museum/:museumid">
        {this.state.results}
+       </a>
        </div>
-    </div>
+    </section>
     )
 }
 
