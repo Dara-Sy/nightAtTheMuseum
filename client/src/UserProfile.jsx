@@ -27,18 +27,12 @@ class UserProfile extends React.Component{
     // get call from comment table to return isfave and comments
     // to make sure it can compare isfave is true or false
   componentWillMount(){
-    fetch(`api/:userid/faves/`)
+    console.log("this is running")
+    fetch(`/api/1/faves/`)
     .then(response => response.json())
       .then(data => {
-        let FaveList = this.props.updateFaves.slice()
-        FaveList.forEach(d => {
-            for(let i = 0; i < data.length; i++){
-              if(d.museum_id === data[i].museum_id){
-                d.isfave = 'true'
-              }
-            }
-          })
-          this.props.updateFaves(data)
+        this.props.updateFaves(data)
+
 
       })
       .catch(err => {
@@ -61,35 +55,40 @@ class UserProfile extends React.Component{
   // checking if fave museum id = index of array museum id
   // and show results in table
   render(){
-    const favorites = this.props.favesall.map((fave, i) => {
-    return(
-        <tbody>
-          <tr>
-            <th>{fave.name}</th>
-            <span className="delbtn">
+   let FavesList = this.props.favesall.map((element, i) => {
+    console.log(element)
+          let url = `/museum/${element.museum_id}`
+          return(
+
+            <section className="searchResults" key={i}>
+
+              <div className="searchResults">
+            <a href={url} onClick={() => {this.props.sendID(element.id)}}>
+              <h2>{element.name}</h2>
+
+              <h2 className="local">{element.address}</h2>
+              </a>
+              <span className="delbtn">
               <a className="icon" onClick={() =>
-                // You don't need to say props since the function is in here.
-                // you can just say this.delFaves
-                // Also, see my note about the delFaves
                 this.delFaves()}>
                   <i className="fas fa-times-circle"></i>
               </a>
             </span>
-          </tr>
-        </tbody>
-      )
-  }
-      )
+              </div>
+              </section>);
+
+        })
+
     return(
       <div>
-        <table className="table">
-         <thead>
-          <tr>
-            <th>Favorites</th>
-          </tr>
-         </thead>
-          {favorites}
-        </table>
+        <div className="table">
+         <div>
+          <div>
+            <h1>Favorites</h1>
+          </div>
+         </div>
+          {FavesList}
+        </div>
       </div>
       )
   }
