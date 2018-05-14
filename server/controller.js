@@ -106,7 +106,7 @@ module.exports = {
   },
 
   getAPIKey(req, res, next) {
-    res.locals.apikey = process.env.API_KEY2;
+    res.locals.apikey = process.env.API_KEY;
     next();
   },
 

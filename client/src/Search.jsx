@@ -123,6 +123,7 @@ render(props) {
   return(
     <section className="searchContainer">
       <h3>Search</h3>
+    <form id="form">
       <input className="searchInput"
        type="text"
        name="zipcode"
@@ -130,6 +131,7 @@ render(props) {
        onChange={this.newSearch}
        />
        <button className="button" onClick={this.getData}>Find Museums</button>
+    </form>
        <div className="">
         {this.state.results}
        </div>
