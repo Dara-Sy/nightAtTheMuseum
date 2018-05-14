@@ -63,58 +63,61 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <main>
-          <Switch>
-            <Route
-              path="/museum/:museumid"
-              render={() => (
-                <Museums
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route
-              path="/:userid/faves"
-              render={() => (
-                <UserProfile
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route
-              path="/search"
-              render={() => (
-                <Search
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.updateFaves}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <Route path="/" />
-          </Switch>
-        </main>
         <div className="Nav">
-          <h1>Night At The Museum</h1>
+            <h1>Night At The Museum</h1>
 
-          <a className="navlinks" href="/login"> Home </a>
-          <a className="navlinks" href="/search"> Search </a>
+            <a className="navlinks" href="/login"> Home </a>
+            <a className="navlinks" href="/search"> Search </a>
 
         </div>
+          <main>
+            <Switch>
+              <Route
+                path="/museum/:museumid"
+                render={() => (
+                  <Museums
+                    museumall={this.state.museumAll}
+                    changeMuseum={this.affectMuseumAll}
+                    favesall={this.state.faves}
+                    updateFaves={this.updateFaves}
+                    delFaves={this.delFaves}
+                  />)}
+              />
+              <Route
+                path="/:userid/faves"
+                render={() => (
+                  <UserProfile
+                    museumall={this.state.museumAll}
+                    changeMuseum={this.affectMuseumAll}
+                    favesall={this.state.faves}
+                    updateFaves={this.updateFaves}
+                    delFaves={this.delFaves}
+                  />)}
+              />
+              <Route
+                path="/search"
+                render={() => (
+                  <Search
+                    museumall={this.state.museumAll}
+                    changeMuseum={this.affectMuseumAll}
+                    favesall={this.state.faves}
+                    updateFaves={this.updateFaves}
+                    delFaves={this.delFaves}
+                  />)}
+              />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+              <Route path="/" />
+            </Switch>
+          </main>
 
-        <div className="Footer">
-          <h4> © Made by the best DALP you'll ever meet</h4>
+
+          <div className="Navimg"> </div>
+
+          <div className="Footer">
+            <h4> © Made by the best DALP you'll ever meet</h4>
+          </div>
         </div>
-      </div>
     );
   }
 }
