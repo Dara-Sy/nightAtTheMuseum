@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class UserProfile extends React.Component{
@@ -61,11 +62,11 @@ class UserProfile extends React.Component{
             <section className="searchResults" key={i}>
 
               <div className="searchResults">
-            <a href={url} onClick={() => {this.props.sendID(element.museum_id)}}>
+            <Link to={url} onClick={() => {this.props.sendID(element.museum_id)}}>
               <h2>{element.name}</h2>
 
               <h2 className="local">{element.address}</h2>
-              </a>
+              </Link>
               <span className="delbtn">
               <a className="icon" onClick={() =>
                 this.delFaves()}>
