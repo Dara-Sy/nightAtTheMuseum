@@ -51,11 +51,14 @@ export default class Register extends React.Component {
   render(props) {
     return(
       <main className="Navimg">
+      <div className="boxReg">
+          </div>
         <div className="logInContainer">
+        <h2>Register</h2>
           <tbody>
             <tr>
               <td>
-                <p>First Name</p>
+                <p>First Name &nbsp;&nbsp;&nbsp;</p>
               </td>
               <td>
                 <input
@@ -115,13 +118,13 @@ export default class Register extends React.Component {
             </tr>
             <tr>
               <td>
-                <p></p>
+                <p>Confirm</p>
               </td>
               <td>
                 <input
                   className="regInput"
                   type="password"
-                  placeholder="enter password again"
+                  placeholder="confirm password"
                   ref="password2"
                   name="password2"
                   onInput={this.handleChange}
@@ -134,6 +137,7 @@ export default class Register extends React.Component {
           </tbody>
           <div className="regButton">
             <button
+              className="button"
               type="submit"
               onClick={this.submitReg}
             >Submit</button>

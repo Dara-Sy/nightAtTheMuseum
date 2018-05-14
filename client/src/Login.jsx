@@ -41,10 +41,11 @@ export default class Login extends React.Component {
           <div className="box">
           </div>
         <div className="logInContainer">
+        <h2> Welcome! Sign in here: </h2>
             <tbody>
               <tr>
                 <td>
-                  <p>Username</p>
+                  <p>Username &nbsp;&nbsp;&nbsp;</p>
                 </td>
                 <td>
                   <input
@@ -80,6 +81,9 @@ export default class Login extends React.Component {
                 onClick={this.submitReg}
               >Submit</button>
             </div>
+            <p>Not a Member? &nbsp;&nbsp;
+            <a href="/register" className="smallLink">Sign Up Here! </a>
+            </p>
           </div>
 
       </main>

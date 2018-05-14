@@ -63,6 +63,20 @@ header {
     padding: 10px;
 }
 
+.NavimgSrch {
+    overflow: hidden;
+    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
+    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_700/v1526314257/NightMuseum.jpg");
+    background-repeat: repeat;
+    /*text-align: center;*/
+    color: color;
+    height: 500px;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    padding: 10px;
+}
+
 
 
 /* unvisited link */
@@ -92,6 +106,32 @@ header {
 /*.navlinks:active {
     color: black;
 }*/
+
+
+/* unvisited link */
+.smallLink:link {
+    font-size: 15px;
+    display: inline;
+    padding-right: 30px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-style: bold;
+    /*font-size: 20px;*/
+}
+
+/* visited link */
+.smallLink:visited {
+    color: #FFFFFF;
+}
+
+
+/* mouse over link */
+.smallLink:hover {
+    color: #F2F4CB;
+    text-shadow: 2px 2px #B7990D;
+    font-style: bold;
+}
+
 
 
 
@@ -131,7 +171,7 @@ a:active {
   padding-left: 5px;
   text-align: left;
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 16px;
   color: black;
 }
 
@@ -147,13 +187,23 @@ a:active {
   width: 130px;
   border-radius: 8px;
   cursor: pointer;
+}
 
+.buttonSrch {
+  background-color: #B7990D;
+  color: white;
+  height: 25px;
+  width: 130px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 20px;
 }
 
 .Footer {
    position:fixed;
    left:0px;
    bottom:15px;
+   /*top: 500px;*/
    height:30px;
    width:100%;
    text-align: center;
@@ -170,7 +220,7 @@ a:active {
   margin-top: 15%;
   /*top: 120px;*/
   /*text-align: center;*/
-  margin-left: 15px;
+  margin-left: 18%;
   position: relative;
 }
 
@@ -181,8 +231,8 @@ a:active {
 
 .logInContainer {
   /*text-align: center;*/
-  margin-left: 30%;
-  margin-top: 15%;
+  margin-left: 35%;
+  margin-top: 10%;
   /*top: 120px;*/
   position: relative;
   width:25em;
@@ -195,8 +245,28 @@ a:active {
   opacity: 0.5;
   position: absolute;
   margin-top: 10%;
-  margin-left: 12%;
-  height: 15em;
+  margin-left: 16%;
+  height: 17em;
+  width: 50em;
+}
+
+.boxReg {
+  background-color: #D1D8C8;
+  opacity: 0.5;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 16%;
+  height: 25em;
+  width: 50em;
+}
+
+.boxSrch {
+  background-color: #D1D8C8;
+  opacity: 0.5;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 16%;
+  height: 25em;
   width: 50em;
 }
 
@@ -207,8 +277,17 @@ a:active {
 }
 
 .logInButton {
-  margin-left: 18%;
+  margin-left: 23%;
 }
+
+.regButton {
+  margin-left: 25%;
+  /*margin-top: 5%;*/
+}
+
+
+
+
 
 
 @keyframes App-logo-spin {
