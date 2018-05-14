@@ -37,9 +37,9 @@ module.exports = {
     return db.any(`
       SELECT *
         FROM comments
-       WHERE comments.comments_id = $1
         JOIN favemuseum
           ON favemuseum.museum_id = comments.museum_id
+       WHERE comments.comments_id = $1
         `, museum_id);
   },
 

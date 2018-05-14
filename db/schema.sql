@@ -25,8 +25,9 @@ CREATE TABLE comments (
   isfave BOOLEAN DEFAULT false
 );
 
-CREATE TABLE favemuseum (
+CREATE TABLE favemuseums (
 museum_id TEXT PRIMARY KEY,
 name TEXT,
 address TEXT
+user_id INTEGER REFERENCES users(user_id)
 );

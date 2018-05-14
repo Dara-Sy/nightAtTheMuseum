@@ -22,7 +22,7 @@ class Museums extends React.Component {
   }
 
   componentWillMount() {
-    fetch(`/api/museum/1`)
+    fetch(`/api/museum/${this.props.museumid}`)
     .then(response => response.json())
       .then(data => {
         if(data.length === 0) {

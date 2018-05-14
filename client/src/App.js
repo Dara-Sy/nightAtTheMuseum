@@ -12,10 +12,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       museumAll: [],
-      faves: []
+      faves: [],
+      museumid: '',
     };
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
     this.affectFavesList = this.affectFavesList.bind(this);
+    this.sendID = this.sendID.bind(this);
   }
 
   affectMuseumAll(newArray) {
@@ -28,6 +30,12 @@ export default class App extends React.Component {
   affectFavesList(newArray) {
     this.setState({
       faves: newArray,
+    })
+  }
+
+  sendID(id) {
+    this.setState({
+      museumid: id
     })
   }
 
@@ -82,6 +90,7 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.updateFaves}
                     delFaves={this.delFaves}
+                    museumid={this.state.museumid}
                   />)}
               />
               <Route
@@ -93,6 +102,7 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.updateFaves}
                     delFaves={this.delFaves}
+                    sendID={this.sendID}
                   />)}
               />
               <Route
@@ -104,6 +114,7 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.updateFaves}
                     delFaves={this.delFaves}
+                    sendID={this.sendID}
                   />)}
               />
               <Route path="/register" component={Register} />
