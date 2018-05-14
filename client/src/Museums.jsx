@@ -187,7 +187,6 @@ class Museums extends React.Component {
           <textarea id="comments"></textarea>
           <input type="text" id="rating" />
           <input type="hidden" id="user_id" value="3" />
-          <input type="checkbox" id="isfave" />
           <div>
             <button onClick={() => {this.submitComment()}}>CLICK ME</button>
           </div>
