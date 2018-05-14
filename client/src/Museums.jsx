@@ -57,17 +57,10 @@ class Museums extends React.Component {
     fetch(`/api/museum/${this.props.museumid}`)
     .then(response => response.json())
       .then(data => {
-        if(data.length === 0) {
-          console.log('no data returned')
-        } else {
-          let poop = '';
-          for(let i = 0; i < data[0].rating; i++) {
-            poop += 1;
-          }
           fetch(`/api/secret`)
           .then(response => response.json())
             .then(apikey => {
-              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${data[0].museum_location}&key=${apikey}`
+              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${this.props.city}&key=${apikey}`
               fetch(url)
                 .then( response => response.json())
                   .then(result => {
@@ -103,7 +96,7 @@ class Museums extends React.Component {
                     }
               })
             })
-        }
+
       })
   }
 

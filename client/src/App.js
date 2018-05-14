@@ -15,6 +15,7 @@ export default class App extends React.Component {
       museumAll: [],
       faves: [],
       museumid: '',
+      city: ''
     };
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
     this.affectFavesList = this.affectFavesList.bind(this);
@@ -34,10 +35,13 @@ export default class App extends React.Component {
     })
   }
 
-  sendID(id) {
-    console.log('thisisSendID: ', id)
+  sendID(id, city) {
+    if(city === undefined) {
+      city = '';
+    }
     this.setState({
-      museumid: id
+      museumid: id,
+      city: city
     })
   }
 
@@ -93,7 +97,7 @@ export default class App extends React.Component {
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     museumid={this.state.museumid}
-                    thisprops={this.props}
+                    city={this.state.city}
                   />)}
               />
               <Route

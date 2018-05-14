@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class Search extends React.Component {
   constructor(props) {
@@ -51,7 +52,8 @@ getData(e) {
   e.preventDefault();
 
  let city = this.state.city;
-  city = city.replace(" ", "+");
+  city = city.split(' ').join('+');
+  city = city.split(',').join('+');
   console.log(`i am `, city)
 
   fetch(`/api/secret`)
@@ -64,19 +66,23 @@ getData(e) {
             const toRender = this.props.museumall.map((element, i) => {
                 let url = `/museum/${element.id}`
                 return (
-                    <a href={url} onClick={() => {this.props.sendID(element.id)}}>
                     <section className="searchResults" key={i}>
+                    {/*<a href={url} onClick={() => {this.props.sendID(element.id)}}>*/}
 
 
-                          <i class="fas fa-university fa-5x" aria-hidden="true"></i>
+                        <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
+                          <i class="fas fa-university fa-5x" aria-hidden="true">
+                          </i>
+                        </Link>
+                          {/*</a>*/}
                             <div className="searchRes">
                             <h2>{element.name}</h2>
-                            <i class="fas fa-star fa-3x"></i>
+                            <i class="fas fa-star fa-2x"></i>
 
                             <h2 className="local">{element.formatted_address}</h2>
                             </div>
 
-                        </section> </a>);
+                        </section> );
           })
               this.setState({
               results: toRender
@@ -118,45 +124,21 @@ render(props) {
 
 
   return(
-<<<<<<< HEAD
-    <section className="searchContainer">
-      <h3>Search</h3>
-    <form id="form">
-      <input className="searchInput"
-       type="text"
-       name="zipcode"
-       placeholder="searchbar"
-       onChange={this.newSearch}
-       />
-       <button className="button" onClick={this.getData}>Find Museums</button>
-    </form>
-       <div className="">
-
-       {this.state.results}
-
-       </div>
-    </section>
-=======
-    <main className="NavimgSrch">
-    <div className="boxSrch">
-    </div>
+    <main>
       <section className="searchContainer">
         <h2>Search</h2>
-        <input className="searchInput"
-         type="text"
-         name="zipcode"
-         placeholder="searchbar"
-         onChange={this.newSearch}
-         />
-         <button className="buttonSrch" onClick={this.getData}>Find Museums</button>
-         <div className="">
-         <a href="/museum/:museumid">
+        <form id="form">
+          <input className="searchInput"
+           type="text"
+           name="zipcode"
+           placeholder="searchbar"
+           onChange={this.newSearch}
+           />
+           <button className="buttonSrch" onClick={this.getData}>Find Museums</button>
+         </form>
          {this.state.results}
-         </a>
-         </div>
       </section>
      </main>
->>>>>>> a0d69995de2281de2601af530d0dd87037812532
     )
 }
 

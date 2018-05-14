@@ -54,15 +54,17 @@ class UserProfile extends React.Component{
   // and show results in table
   render(){
    let FavesList = this.props.favesall.map((element, i) => {
-    console.log('this is the id from userpro',element.museum_id)
-    console.log('thisnisuserpro', this.props)
+          let city = element.address.split(' ').join('+');
+          city = city.split(',').join('+')
+          city = city.split('++').join('+')
+          console.log('this is city', city)
           let url = `/museum/${element.museum_id}`
           return(
 
             <section className="searchResults" key={i}>
 
               <div className="searchResults">
-            <Link to={url} onClick={() => {this.props.sendID(element.museum_id)}}>
+            <Link to={url} onClick={() => {this.props.sendID(element.museum_id, city)}}>
               <h2>{element.name}</h2>
 
               <h2 className="local">{element.address}</h2>
