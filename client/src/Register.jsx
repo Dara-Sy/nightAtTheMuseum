@@ -50,94 +50,100 @@ export default class Register extends React.Component {
 
   render(props) {
     return(
-      <div className="logInContainer">
-        <tbody>
-          <tr>
-            <td>
-              <p>First Name</p>
-            </td>
-            <td>
-              <input
-                className="regInput"
-                type="text"
-                placeholder="first name"
-                ref="fname"
-                name="fname"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Last Name</p>
-            </td>
-            <td>
-              <input
-                className="regInput"
-                type="text"
-                placeholder="last name"
-                ref="lname"
-                name="lname"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Username</p>
-            </td>
-            <td>
-              <input
-                className="regInput"
-                type="text"
-                placeholder="username"
-                ref="username"
-                name="username"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Password</p>
-            </td>
-            <td>
-              <input
-                className="regInput"
-                type="password"
-                placeholder="password"
-                ref="password"
-                name="password"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p></p>
-            </td>
-            <td>
-              <input
-                className="regInput"
-                type="password"
-                placeholder="enter password again"
-                ref="password2"
-                name="password2"
-                onInput={this.handleChange}
-              />
-            </td>
-            <td>
-              <p ref="dontmatchmsg"></p>
-            </td>
-          </tr>
-        </tbody>
-        <div className="regButton">
-          <button
-            type="submit"
-            onClick={this.submitReg}
-          >Submit</button>
+      <main className="Navimg">
+      <div className="boxReg">
+          </div>
+        <div className="logInContainer">
+        <h2>Register</h2>
+          <tbody>
+            <tr>
+              <td>
+                <p>First Name &nbsp;&nbsp;&nbsp;</p>
+              </td>
+              <td>
+                <input
+                  className="regInput"
+                  type="text"
+                  placeholder="first name"
+                  ref="fname"
+                  name="fname"
+                  onInput={this.handleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Last Name</p>
+              </td>
+              <td>
+                <input
+                  className="regInput"
+                  type="text"
+                  placeholder="last name"
+                  ref="lname"
+                  name="lname"
+                  onInput={this.handleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Username</p>
+              </td>
+              <td>
+                <input
+                  className="regInput"
+                  type="text"
+                  placeholder="username"
+                  ref="username"
+                  name="username"
+                  onInput={this.handleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Password</p>
+              </td>
+              <td>
+                <input
+                  className="regInput"
+                  type="password"
+                  placeholder="password"
+                  ref="password"
+                  name="password"
+                  onInput={this.handleChange}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Confirm</p>
+              </td>
+              <td>
+                <input
+                  className="regInput"
+                  type="password"
+                  placeholder="confirm password"
+                  ref="password2"
+                  name="password2"
+                  onInput={this.handleChange}
+                />
+              </td>
+              <td>
+                <p ref="dontmatchmsg"></p>
+              </td>
+            </tr>
+          </tbody>
+          <div className="regButton">
+            <button
+              className="button"
+              type="submit"
+              onClick={this.submitReg}
+            >Submit</button>
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 }

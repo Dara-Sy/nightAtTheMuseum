@@ -37,47 +37,56 @@ export default class Login extends React.Component {
 
   render(props) {
     return (
-      <div className="logInContainer">
-        <tbody>
-          <tr>
-            <td>
-              <p>Username</p>
-            </td>
-            <td>
-              <input
-                className="reginput"
-                type="text"
-                placeholder="username"
-                ref="username"
-                name="username"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Password</p>
-            </td>
-            <td>
-              <input
-                className="reginput"
-                type="password"
-                placeholder="password"
-                ref="password"
-                name="password"
-                onInput={this.handleChange}
-              />
-            </td>
-          </tr>
-        </tbody>
-        <div className="logInButton">
-          <button
-            className="button"
-            type="submit"
-            onClick={this.submitReg}
-          >Submit</button>
-        </div>
-      </div>
+      <main className="Navimg">
+          <div className="box">
+          </div>
+        <div className="logInContainer">
+        <h2> Welcome! Sign in here: </h2>
+            <tbody>
+              <tr>
+                <td>
+                  <p>Username &nbsp;&nbsp;&nbsp;</p>
+                </td>
+                <td>
+                  <input
+                    className="reginput"
+                    type="text"
+                    placeholder="username"
+                    ref="username"
+                    name="username"
+                    onInput={this.handleChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Password</p>
+                </td>
+                <td>
+                  <input
+                    className="reginput"
+                    type="password"
+                    placeholder="password"
+                    ref="password"
+                    name="password"
+                    onInput={this.handleChange}
+                  />
+                </td>
+              </tr>
+            </tbody>
+            <div className="logInButton">
+              <button
+                className="button"
+                type="submit"
+                onClick={this.submitReg}
+              >Submit</button>
+            </div>
+            <p>Not a Member? &nbsp;&nbsp;
+            <a href="/register" className="smallLink">Sign Up Here! </a>
+            </p>
+          </div>
+
+      </main>
     );
   }
 }

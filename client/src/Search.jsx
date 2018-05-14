@@ -67,10 +67,11 @@ getData(e) {
                     <a href={url} onClick={() => {this.props.sendID(element.id)}}>
                     <section className="searchResults" key={i}>
 
-                          <img src={element.icon} />
 
+                          <i class="fas fa-university fa-5x" aria-hidden="true"></i>
                             <div className="searchRes">
                             <h2>{element.name}</h2>
+                            <i class="fas fa-star fa-3x"></i>
 
                             <h2 className="local">{element.formatted_address}</h2>
                             </div>
@@ -117,6 +118,7 @@ render(props) {
 
 
   return(
+<<<<<<< HEAD
     <section className="searchContainer">
       <h3>Search</h3>
     <form id="form">
@@ -134,6 +136,27 @@ render(props) {
 
        </div>
     </section>
+=======
+    <main className="NavimgSrch">
+    <div className="boxSrch">
+    </div>
+      <section className="searchContainer">
+        <h2>Search</h2>
+        <input className="searchInput"
+         type="text"
+         name="zipcode"
+         placeholder="searchbar"
+         onChange={this.newSearch}
+         />
+         <button className="buttonSrch" onClick={this.getData}>Find Museums</button>
+         <div className="">
+         <a href="/museum/:museumid">
+         {this.state.results}
+         </a>
+         </div>
+      </section>
+     </main>
+>>>>>>> a0d69995de2281de2601af530d0dd87037812532
     )
 }
 
@@ -142,3 +165,4 @@ render(props) {
 export default Search;
 
 // <input onChange={(e) => this.newSearch(e)}
+// <img src={element.icon} />
