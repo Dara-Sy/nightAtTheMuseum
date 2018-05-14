@@ -16,8 +16,6 @@ class Search extends React.Component {
     // this.renderMuseums = this.renderMuseums.bind(this);
   }
 
-
-
 newSearch(e) {
   this.setState({
     city: e.target.value
@@ -64,7 +62,11 @@ getData(e) {
           .then(data => {
             this.props.changeMuseum(data.results)
             const toRender = this.props.museumall.map((element, i) => {
-                return ( <section className="searchResults" key={i}>
+              console.log('keys: ', element)
+                let url = `/museum/${element.id}`
+                return (
+                    <a href={url}>
+                    <section className="searchResults" key={i}>
 
                           <img src={element.icon} />
 
@@ -74,7 +76,7 @@ getData(e) {
                             <h2 className="local">{element.formatted_address}</h2>
                             </div>
 
-                        </section>);
+                        </section> </a>);
           })
               this.setState({
               results: toRender
@@ -126,9 +128,7 @@ render(props) {
        />
        <button className="button" onClick={this.getData}>Find Museums</button>
        <div className="">
-       <a href="/museum/:museumid">
-       {this.state.results}
-       </a>
+        {this.state.results}
        </div>
     </section>
     )
