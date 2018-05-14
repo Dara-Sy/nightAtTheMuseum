@@ -64,7 +64,7 @@ getData(e) {
           .then(data => {
             this.props.changeMuseum(data.results)
             const toRender = this.props.museumall.map((element, i) => {
-                return ( <section className="searchResults" key={i}>
+                return ( <section className="searchResults" key={i} href="/museum/:museumid">
 
                           <img src={element.icon} />
 
@@ -126,9 +126,9 @@ render(props) {
        />
        <button className="button" onClick={this.getData}>Find Museums</button>
        <div className="">
-       <a href="/museum/:museumid">
+
        {this.state.results}
-       </a>
+
        </div>
     </section>
     )
