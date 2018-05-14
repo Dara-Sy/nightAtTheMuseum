@@ -15,10 +15,11 @@
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.2.1",
     "morgan": "^1.9.0",
-    "pg-promise": "^8.4.0"
+    "pg-promise": "^8.4.0",
+    "react-fontawesome": "^1.6.1"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome": "^1.1.5",
+    "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-brands": "^5.0.10",
     "@fortawesome/fontawesome-free-solid": "^5.0.10",
     "@fortawesome/react-fontawesome": "0.0.18",

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 @import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+@import url('https://use.fontawesome.com/releases/v5.0.13/css/all.css');
 
 
 body {
@@ -31,35 +32,36 @@ body {
   font-size: large;
 }
 
-.Nav {
+header {
     overflow: hidden;
     background-color: #110B11;
-    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/v1526274959/Night_1.jpg");*/
+    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_100/v1526312411/Night_5.jpg");*/
     /*background-image: url("http://res.cloudinary.com/daracell/image/upload/v1526274959/Night_1.jpg");*/
     /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
-    /*background-repeat: none;*/
+    background-repeat: no-repeat;
     text-align: center;
     color: white;
     height: 100px;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     padding: 10px;
     z-index: 1;
 }
 
-/*.Navimg {
+.Navimg {
     overflow: hidden;
-    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");
+    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
+    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_700/v1526314257/NightMuseum.jpg");
     background-repeat: none;
-    text-align: center;
-    color: white;
-    height: 390px;
-    position: fixed;
+    /*text-align: center;*/
+    color: color;
+    height: 500px;
+    position: absolute;
     top: 100px;
     width: 100%;
     padding: 10px;
-}*/
+}
 
 
 
@@ -142,9 +144,10 @@ a:active {
   background-color: #B7990D;
   color: white;
   height: 25px;
-  width: 100px;
+  width: 130px;
   border-radius: 8px;
   cursor: pointer;
+
 }
 
 .Footer {
@@ -178,16 +181,33 @@ a:active {
 
 .logInContainer {
   /*text-align: center;*/
-  margin-left: 40%;
+  margin-left: 30%;
   margin-top: 15%;
   /*top: 120px;*/
   position: relative;
+  width:25em;
+  padding: 20px;
+  /*opacity: 0.5;*/
+}
+
+.box {
+  background-color: #D1D8C8;
+  opacity: 0.5;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 12%;
+  height: 15em;
+  width: 50em;
 }
 
 
 
 .logInput {
   text-align: center;
+}
+
+.logInButton {
+  margin-left: 18%;
 }
 
 
@@ -203,3 +223,6 @@ a:active {
 .begreen {
   color: lime;
 }
+
+
+

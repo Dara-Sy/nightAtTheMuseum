@@ -6,6 +6,7 @@ import Register from './Register';
 import Login from './Login';
 import Museums from './Museums';
 import './App.css';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -64,13 +65,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="Nav">
+        <header>
             <h1>Night At The Museum</h1>
 
             <a className="navlinks" href="/login"> Home </a>
             <a className="navlinks" href="/search"> Search </a>
 
-        </div>
+        </header>
           <main>
             <Switch>
               <Route
@@ -113,12 +114,20 @@ export default class App extends React.Component {
           </main>
 
 
-          <div className="Navimg"> </div>
+
 
           <div className="Footer">
+
             <h4> © Made by the best DALP you'll ever meet</h4>
+
+
+
           </div>
         </div>
     );
   }
 }
+
+
+// <i class="fa fa-car" aria-hidden="true"></i>
+// <span class="fa-twitter fa"></span>
