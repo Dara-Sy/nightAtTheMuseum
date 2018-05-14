@@ -59,7 +59,16 @@ module.exports = {
   async createComment(req, res, next) {
     // hits db to add comment to museum (faves table)
     try {
-      res.locals.museum = await museumDB.createComment(req.body);
+      console.log('thisisreq.body',req.body)
+      let theData = {
+        museum_id: req.params.museumid,
+        comments: req.body.theData.comments,
+        rating: req.body.theData.rating,
+        user_id: parseInt(req.body.theData.user_id),
+        isfave: req.body.theData.isfave
+      }
+      console.log('this is thedata', theData)
+      res.locals.museum = await museumDB.createComment(theData);
       next();
     } catch (e) {
       next(e);
@@ -71,6 +80,7 @@ module.exports = {
   async updateComment(req, res, next) {
     // hit the db to change comment
     try {
+      console.log('this isreq.body', req.body)
       res.locals.museum = await museumDB.updateComments(req.body);
       next();
     } catch (e) {
@@ -82,7 +92,7 @@ module.exports = {
     // hit the db to unfavorite something
     try {
       // passing 1 thing with 2 keys userid and favesid
-      res.locals.museum = await museumDB.destroy(req.params);
+      res.locals.museum = await museumDB.destroyComments(req.params.commentid);
       next();
     } catch (e) {
       next(e);
@@ -106,7 +116,7 @@ module.exports = {
   },
 
   getAPIKey(req, res, next) {
-    res.locals.apikey = process.env.API_KEY2;
+    res.locals.apikey = process.env.API_KEY;
     next();
   },
 

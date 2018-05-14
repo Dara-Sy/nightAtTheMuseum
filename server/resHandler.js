@@ -15,6 +15,7 @@ module.exports = {
   },
 
   sendAPI(req, res) {
+    console.log('this si apikey',res.locals.apikey)
     res.json(res.locals.apikey);
   },
 

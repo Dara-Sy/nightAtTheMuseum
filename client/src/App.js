@@ -40,16 +40,16 @@ export default class App extends React.Component {
     })
   }
 
-  delFaves(user) {
+  delFaves(commentsid) {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === user.museum_id) {
+      if(d.museum_id === commentsid) {
         index = i;
       }
     })
     let data = newFaves.splice(index, 1)
-    fetch(`/${user.user_id}/faves/:faves_id`, {
+    fetch(`/${commentsid}/faves/:faves_id`, {
       body: JSON.stringify(data),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -92,6 +92,7 @@ export default class App extends React.Component {
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     museumid={this.state.museumid}
+                    thisprops={this.props}
                   />)}
               />
               <Route

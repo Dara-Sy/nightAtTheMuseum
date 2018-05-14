@@ -34,10 +34,12 @@ module.exports = {
 
   getOneFave(museum_id) {
     return db.any(`
-      SELECT comments.*, favemuseums.*
+      SELECT comments.*, favemuseums.*, users.username
         FROM comments
         JOIN favemuseums
           ON favemuseums.museum_id = comments.museum_id
+        JOIN users
+          ON users.user_id = favemuseums.user_id
        WHERE favemuseums.museum_id = $1
         `, museum_id);
   },
@@ -51,9 +53,10 @@ module.exports = {
   },
 
   destroyComments(commentsid) {
-    return db.none(`
+    return db.one(`
       DELETE FROM comments
       WHERE comments_id = $1
+      RETURNING comments_id
       `, commentsid)
   },
 
@@ -74,7 +77,8 @@ module.exports = {
         (museum_id, comments, rating, user_id, isfave)
       VALUES
         ($/museum_id/, $/comments/, $/rating/, $/user_id/, $/isfave/)
-    `);
+      RETURNING *
+    `, data);
   },
 
     // updateComments(data) {
@@ -91,26 +95,6 @@ module.exports = {
   // adding comments to museum
   // adds to faves table
   // passing 1 thing, data
-  create(museumid, data) {
-    return db.one(`
-      INSERT INTO comments (
-        museum_id,
-        museum_location,
-        comments,
-        rating,
-        user_id,
-        isfave)
-
-      VALUES (
-        $1,
-        $/museum_location/,
-        $/comments/,
-        $/rating/,
-        $/user_id/,
-        $/isfave/)
-
-      `, [museumid, data]);
-  },
 
 // this says updateComments
 // but my controller function has updateComment

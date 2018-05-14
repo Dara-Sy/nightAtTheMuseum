@@ -5,7 +5,9 @@
  const controller = require('./controller');
 
 
-  router.route('/:userid/faves/:favesid')
+
+
+  router.route('/:commentid/faves')
     // React sends userid, favesid
     .delete(
       controller.delFaves,

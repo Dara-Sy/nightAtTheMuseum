@@ -20,7 +20,7 @@ CREATE TABLE comments (
   museum_id VARCHAR(255),
   museum_location TEXT,
   comments TEXT,
-  rating TEXT,
+  rating INTEGER,
   user_id INTEGER REFERENCES users(user_id),
   isfave BOOLEAN DEFAULT false
 );

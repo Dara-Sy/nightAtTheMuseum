@@ -28,7 +28,7 @@ class UserProfile extends React.Component{
     // to make sure it can compare isfave is true or false
   componentWillMount(){
     console.log("this is running")
-    fetch(`/api/1/faves/`)
+    fetch(`/api/3/faves/`)
     .then(response => response.json())
       .then(data => {
         this.props.updateFaves(data)
@@ -69,7 +69,7 @@ class UserProfile extends React.Component{
               </Link>
               <span className="delbtn">
               <a className="icon" onClick={() =>
-                this.delFaves()}>
+                this.props.delFaves()}>
                   <i className="fas fa-times-circle"></i>
               </a>
             </span>

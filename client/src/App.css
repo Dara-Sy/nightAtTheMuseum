@@ -162,6 +162,33 @@ a:active {
   text-align: center;
 }
 
+.museumcontainer {
+  height: 90vh;
+}
+
+.usercomments {
+  margin-top: 130px;
+}
+
+.thecomments > p {
+  text-align: center;
+}
+
+.thecomments > h3 {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.thebutton {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background: orange;
+}
 
 .searchContainer{
   margin-top: 15%;
