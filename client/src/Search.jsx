@@ -23,6 +23,10 @@ newSearch(e) {
   console.log(`I am what yu search`, this.state.city)
 }
 
+sendID() {
+
+}
+
 // !!!!!!!!!!!!!!!!!!!!!!
 // Don't store the museum state in here. If you need
 // the list itself but don't need to add or remove
@@ -62,10 +66,9 @@ getData(e) {
           .then(data => {
             this.props.changeMuseum(data.results)
             const toRender = this.props.museumall.map((element, i) => {
-              console.log('keys: ', element)
                 let url = `/museum/${element.id}`
                 return (
-                    <a href={url}>
+                    <a href={url} onClick={() => {this.sendID(element.id)}}>
                     <section className="searchResults" key={i}>
 
                           <img src={element.icon} />
