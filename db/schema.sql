@@ -15,12 +15,6 @@ CREATE TABLE users (
   lname TEXT
 );
 
-CREATE TABLE favemuseum (
-  museum_id TEXT PRIMARY KEY,
-  name TEXT,
-  address TEXT
-);
-
 CREATE TABLE comments (
   comments_id SERIAL PRIMARY KEY,
   museum_id VARCHAR(255),

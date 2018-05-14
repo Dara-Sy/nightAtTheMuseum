@@ -96,6 +96,7 @@ module.exports = {
     return db.one(`
       INSERT INTO comments (
         museum_id,
+        museum_location,
         comments,
         rating,
         user_id,
@@ -103,6 +104,7 @@ module.exports = {
 
       VALUES (
         $1,
+        $/museum_location/,
         $/comments/,
         $/rating/,
         $/user_id/,
@@ -114,11 +116,12 @@ module.exports = {
 // this says updateComments
 // but my controller function has updateComment
 // passing 1 thing, data
-  updateComments(data) {
+  updateComments(museumid, data) {
     return db.one(`
       UPDATE comments
          SET
    museum_id = $1,
+  museum_location = $/museum_location/,
     comments = $/comments/,
       rating = $/rating/
      user_id = $/user_id/,
@@ -126,7 +129,7 @@ module.exports = {
 
      WHERE faves_id = $/faves_id/
    RETURNING *
-           `, data);
+           `, museumid, data);
 
   }
 
