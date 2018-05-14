@@ -22,13 +22,12 @@ module.exports = {
       SELECT
         users.user_id,
         users.username,
-        comments.*,
-        favemuseum.*
+        users.fname,
+        users.lname,
+        favemuseums.*
       FROM users
-      JOIN comments
-        ON (users.user_id = comments.user_id)
-      JOIN favemuseum
-        ON (comments.museum_id = favemuseum.museum_id)
+      JOIN favemuseums
+        ON (users.user_id = favemuseums.user_id)
       WHERE users.user_id = $1
       `, userid);
   },
@@ -37,16 +36,16 @@ module.exports = {
     return db.any(`
       SELECT *
         FROM comments
+        JOIN favemuseums
+          ON favemuseums.museum_id = comments.museum_id
        WHERE comments.comments_id = $1
-        JOIN favemuseum
-          ON favemuseum.museum_id = comments.museum_id
         `, museum_id);
   },
 
   destroyMuseum(museumid) {
     return db.none(`
       DELETE
-        FROM favemuseum
+        FROM favemuseums
        WHERE museum_id = $1,
           `, favesid);
   },
