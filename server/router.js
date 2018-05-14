@@ -25,7 +25,7 @@
       resHandler.sendJSON
       )
 
-  router.route('/museum/:commentid')
+  router.route('/museum/:museumid')
     // React sends user_id, comment, rating
     // check if you favorited the museum
     .get(

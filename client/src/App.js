@@ -34,6 +34,7 @@ export default class App extends React.Component {
   }
 
   sendID(id) {
+    console.log('thisisSendID: ', id)
     this.setState({
       museumid: id
     })
@@ -88,7 +89,7 @@ export default class App extends React.Component {
                     museumall={this.state.museumAll}
                     changeMuseum={this.affectMuseumAll}
                     favesall={this.state.faves}
-                    updateFaves={this.updateFaves}
+                    updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     museumid={this.state.museumid}
                   />)}
@@ -100,7 +101,7 @@ export default class App extends React.Component {
                     museumall={this.state.museumAll}
                     changeMuseum={this.affectMuseumAll}
                     favesall={this.state.faves}
-                    updateFaves={this.updateFaves}
+                    updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     sendID={this.sendID}
                   />)}
@@ -112,7 +113,7 @@ export default class App extends React.Component {
                     museumall={this.state.museumAll}
                     changeMuseum={this.affectMuseumAll}
                     favesall={this.state.faves}
-                    updateFaves={this.updateFaves}
+                    updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     sendID={this.sendID}
                   />)}

@@ -45,7 +45,7 @@ module.exports = {
     // checks db to see if you favorited this museum
     try {
       console.log('this is running', req.params)
-      res.locals.museum = await museumDB.getOneFave(parseInt(req.params.commentid));
+      res.locals.museum = await museumDB.getOneFave(req.params.museumid);
       next();
     } catch (e) {
       console.log(e);

@@ -34,11 +34,11 @@ module.exports = {
 
   getOneFave(museum_id) {
     return db.any(`
-      SELECT *
+      SELECT comments.*, favemuseums.*
         FROM comments
         JOIN favemuseums
           ON favemuseums.museum_id = comments.museum_id
-       WHERE comments.comments_id = $1
+       WHERE favemuseums.museum_id = $1
         `, museum_id);
   },
 

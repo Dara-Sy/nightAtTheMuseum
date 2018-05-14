@@ -8,7 +8,6 @@ class UserProfile extends React.Component{
 
   }
 
-
   // fetch all the users favorite museums
   // Don't store state in here. Whenever you need
   // to refer to the whole list of museums, call
@@ -32,8 +31,6 @@ class UserProfile extends React.Component{
     .then(response => response.json())
       .then(data => {
         this.props.updateFaves(data)
-
-
       })
       .catch(err => {
         console.log(err)
@@ -56,14 +53,15 @@ class UserProfile extends React.Component{
   // and show results in table
   render(){
    let FavesList = this.props.favesall.map((element, i) => {
-    console.log(element)
+    console.log('this is the id from userpro',element.museum_id)
+    console.log('thisnisuserpro', this.props)
           let url = `/museum/${element.museum_id}`
           return(
 
             <section className="searchResults" key={i}>
 
               <div className="searchResults">
-            <a href={url} onClick={() => {this.props.sendID(element.id)}}>
+            <a href={url} onClick={() => {this.props.sendID(element.museum_id)}}>
               <h2>{element.name}</h2>
 
               <h2 className="local">{element.address}</h2>
