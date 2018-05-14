@@ -64,46 +64,6 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <main>
-          <Switch>
-            <Route
-              path="/museum/:museumid"
-              render={() => (
-                <Museums
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.affectFavesList}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route
-              path="/:userid/faves"
-              render={() => (
-                <UserProfile
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.affectFavesList}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route
-              path="/search"
-              render={() => (
-                <Search
-                  museumall={this.state.museumAll}
-                  changeMuseum={this.affectMuseumAll}
-                  favesall={this.state.faves}
-                  updateFaves={this.affectFavesList}
-                  delFaves={this.delFaves}
-                />)}
-            />
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
-            <Route path="/" />
-          </Switch>
-        </main>
         <div className="Nav">
             <h1>Night At The Museum</h1>
 
