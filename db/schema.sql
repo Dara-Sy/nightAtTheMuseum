@@ -28,6 +28,6 @@ CREATE TABLE comments (
 CREATE TABLE favemuseums (
 museum_id TEXT PRIMARY KEY,
 name TEXT,
-address TEXT
+address TEXT,
 user_id INTEGER REFERENCES users(user_id)
 );

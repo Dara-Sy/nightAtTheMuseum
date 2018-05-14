@@ -31,7 +31,7 @@ module.exports = {
     try {
       // req.body.favesid = req.params.favesid;
       // Where are you getting faves id from?
-      res.local.museums = await museumDB.getAllFaves(parseInt(req.params.userid));
+      res.locals.museums = await museumDB.getAllFaves(parseInt(req.params.userid));
       next();
     } catch (e) {
       next(e);
