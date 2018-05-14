@@ -15,6 +15,7 @@ export default class App extends React.Component {
       faves: []
     };
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
+    this.affectFavesList = this.affectFavesList.bind(this);
   }
 
   affectMuseumAll(newArray) {

@@ -30,16 +30,16 @@ class UserProfile extends React.Component{
     fetch(`api/:userid/faves/`)
     .then(response => response.json())
       .then(data => {
-        let FaveList = this.props.museumall.slice()
-        let newArray =  FaveList.forEach(d => {
+        let FaveList = this.props.updateFaves.slice()
+        FaveList.forEach(d => {
             for(let i = 0; i < data.length; i++){
               if(d.museum_id === data[i].museum_id){
                 d.isfave = 'true'
               }
             }
           })
-          .then( () => this.props.changeMuseum(newArray)
-        )
+          this.props.updateFaves(data)
+
       })
       .catch(err => {
         console.log(err)
@@ -61,19 +61,17 @@ class UserProfile extends React.Component{
   // checking if fave museum id = index of array museum id
   // and show results in table
   render(){
-    let user = this.props.updateFaves
     const favorites = this.props.favesall.map((fave, i) => {
-      if(fave.museum_id === i.museum_id){
     return(
         <tbody>
           <tr>
-            <th>{fave.museum_id}</th>
+            <th>{fave.name}</th>
             <span className="delbtn">
               <a className="icon" onClick={() =>
                 // You don't need to say props since the function is in here.
                 // you can just say this.delFaves
                 // Also, see my note about the delFaves
-                this.delFaves(user)}>
+                this.delFaves()}>
                   <i className="fas fa-times-circle"></i>
               </a>
             </span>
@@ -81,7 +79,7 @@ class UserProfile extends React.Component{
         </tbody>
       )
   }
-      })
+      )
     return(
       <div>
         <table className="table">
