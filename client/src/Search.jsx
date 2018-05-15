@@ -98,7 +98,7 @@ getData(e) {
       fetch(`/api/secret`)
       .then(response => response.json())
         .then(apikey => {
-          console.log('allfaves', this.props.favesall)
+          console.log('apikey', apikey)
           fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${city}&key=${apikey}`)
           .then(res => res.json())
             .then(data => {

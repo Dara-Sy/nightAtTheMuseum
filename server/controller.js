@@ -1,5 +1,5 @@
-const museumDB = require('./models');
 require('dotenv').config();
+const museumDB = require('./models');
 
 module.exports = {
 
@@ -133,7 +133,7 @@ module.exports = {
   },
 
   getAPIKey(req, res, next) {
-    res.locals.apikey = process.env.API_KEY4;
+    res.locals.apikey = process.env.API_KEY2;
     next();
   },
 
