@@ -36,7 +36,7 @@ Updated faves table in ERD
 
 ## React Tree: 
 
-![1](https://git.generalassemb.ly/raw/DAP/nightAtTheMuseum/9da6bb4c836a24cc27135870b680601fa3ccfad3/appjs.jpg?token=AAAmKg-ShHnjt66w9PrUMzSYe_uzjWVuks5a-0YAwA%3D%3D)
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/appjs.jpg)
 
 
 ## Technologies: 
