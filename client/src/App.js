@@ -108,11 +108,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-        <div>
+      <body>
         <header>
-          <h1>Night At The Museum</h1>
-          <a className="navlinks" href="/login"> Home </a>
-          <a className="navlinks" href="/search"> Search </a>
+            <h1>Night At The Museum</h1>
+
+            <a className="navlinks" href="/login"> Home </a>
+            <a className="navlinks" href="/search"> Search </a>
+            <a className="navlinks" href="/:userid/faves"> Profile </a>
+            <a className="navlinks" href="/:userid/faves"> Log Out </a>
         </header>
           <Switch>
             <Route
@@ -166,10 +169,10 @@ export default class App extends React.Component {
             />
           </Switch>
           <div className="Footer">
-          <h4> © Made by the best DALP you'll ever meet</h4>
-        </div>
-      </div>
-      );
+            <h4> © Made by the best DALP you'll ever meet</h4>
+          </div>
+        </body>
+    );
   }
 }
 

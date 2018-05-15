@@ -210,7 +210,7 @@ class Museums extends React.Component {
           console.log('thisiselement',element)
           return(
             <div>
-            <div className="thebutton" onClick={() => this.deleteComment(element.comments_id)}></div>
+            <div className="delbtn" i className="fas fa-times-circle" onClick={() => this.deleteComment(element.comments_id)}></div>
             <section key={i} className="thecomments">
               <div onClick={() => this.handleEdit(element)}>
                 <h3>{element.username} says:</h3>
@@ -232,9 +232,9 @@ class Museums extends React.Component {
           <h4>{this.state.onemuseum.formatted_address}</h4>
           <p>{this.amIOpen()}</p>
           <div className="fortextbox">
-          <textarea id="comments" required></textarea>
-          <input type="text" id="rating" required/>
+          <textarea className="cmtbox" placeholder="Comments" id="comments" required></textarea>
           <input type="hidden" id="user_id" value="3" />
+          <input className="cmtbox1" placeholder="Rating" type="text" id="rating" required/>
           <div>
             <button className="button" onClick={() => {this.submitComment()}}>Submit Comment</button>
           </div>

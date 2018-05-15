@@ -17,12 +17,12 @@ body {
   height: 80px;
 }
 
-.App-header {
+/*.App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-}
+}*/
 
 .App-title {
   font-size: 1.5em;
@@ -62,6 +62,21 @@ header {
     width: 100%;
     padding: 10px;
 }
+
+.NavimgReg {
+    overflow: hidden;
+    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
+    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_700/v1526314257/NightMuseum.jpg");
+    background-repeat: none;
+    /*text-align: center;*/
+    color: color;
+    height: 100%;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 10px;
+}
+
 
 .NavimgSrch {
     overflow: hidden;
@@ -163,9 +178,38 @@ a:active {
 }
 
 .searchResults {
-
-  /*display: inline-block;*/
+  padding-left: 5px;
+  text-align: left;
+  display: inline-block;
+  margin-left: 16px;
+  color: black;
+  display: inline-block;
+  margin-left: 16px;
+  margin-top: 20px;
 }
+
+
+.table {
+  padding-left: 5px;
+  text-align: left;
+  display: inline-block;
+  margin-left: 16px;
+  color: black;
+  display: inline-block;
+  margin-left: 16px;
+  margin-top: 120px;
+}
+
+.srchbar {
+  margin-top: 145px;
+}
+
+.mainish{
+  /*display: block;*/
+  /*height: 842px;*/
+  width: 940px;
+}
+
 
 .searchRes {
   padding-left: 5px;
@@ -173,6 +217,20 @@ a:active {
   display: inline-block;
   margin-left: 16px;
   color: black;
+}
+
+.searchResUP {
+  padding-left: 5px;
+  text-align: left;
+  display: block;
+  margin-left: 16px;
+  color: black;
+}
+
+.local2 {
+  font-size: 15pt;
+  color: green;
+  margin-left: 24px;
 }
 
 .local {
@@ -296,7 +354,28 @@ img {
   height: 25em;
   width: 50em;
 }
+.fortextbox {
+  display: block;
+  hight: 200px;
+  width: 100px;
+  margin-left: 45%;
 
+}
+.cmtbox {
+/*  width: 150px;
+  height: 25px;*/
+  margin-top: 10px;
+  /*padding-bottom: 20px;*/
+}
+
+.cmtbox1 {
+/*  width: 150px;
+  height: 25px;*/
+  margin-bottom: 10px;
+  /*margin-left: 5px;*/
+  margin-top: 10px;
+
+}
 
 
 .logInput {
