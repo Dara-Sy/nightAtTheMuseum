@@ -312,6 +312,10 @@ img {
   /*margin-top: 5%;*/
 }
 
+i.beyellow {
+  background: yellow;
+  border-radius: 50%;
+}
 
 
 

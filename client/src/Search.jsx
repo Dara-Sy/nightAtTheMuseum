@@ -55,43 +55,55 @@ getData(e) {
   city = city.split(' ').join('+');
   city = city.split(',').join('+');
   console.log(`i am `, city)
-
-  fetch(`/api/secret`)
-    .then(response => response.json())
-      .then(apikey => {
-        fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${city}&key=${apikey}`)
-        .then(res => res.json())
-          .then(data => {
-            this.props.changeMuseum(data.results)
-            const toRender = this.props.museumall.map((element, i) => {
-                let url = `/museum/${element.id}`
-                return (
+  fetch(`/api/3/faves`)
+  .then(response => response.json())
+    .then(data => {
+      this.props.updateFaves(data)
+      fetch(`/api/secret`)
+      .then(response => response.json())
+        .then(apikey => {
+          console.log('allfaves', this.props.favesall)
+          fetch(`https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${city}&key=${apikey}`)
+          .then(res => res.json())
+            .then(data => {
+              this.props.changeMuseum(data.results)
+                const toRender = this.props.museumall.map((element, i) => {
+                  let url = `/museum/${element.id}`
+                  return (
                     <section className="searchResults" key={i}>
-                    {/*<a href={url} onClick={() => {this.props.sendID(element.id)}}>*/}
+                      <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
+                        <i class="fas fa-university fa-5x" aria-hidden="true">
+                        </i>
+                      </Link>
+                      <div className="searchRes" data={element.id}>
+                        <h2>{element.name}</h2>
+                        <i class="fas fa-star fa-2x" onClick=""></i>
 
-
-                        <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
-                          <i class="fas fa-university fa-5x" aria-hidden="true">
-                          </i>
-                        </Link>
-                          {/*</a>*/}
-                            <div className="searchRes">
-                            <h2>{element.name}</h2>
-                            <i class="fas fa-star fa-2x"></i>
-
-                            <h2 className="local">{element.formatted_address}</h2>
-                            </div>
-
-                        </section> );
-          })
-              this.setState({
-              results: toRender
+                        <h2 className="local">{element.formatted_address}</h2>
+                      </div>
+                    </section>
+                  );
                 })
-      })
-          .catch(err =>
-            console.log(err)
-          )
+              this.setState({
+                results: toRender
+              })
+            })
+        })
+        .catch(err =>
+          console.log(err)
+        )
     })
+}
+
+componentDidMount() {
+  let theMuseums = document.querySelectorAll('.searchRes')
+  theMuseums.forEach(d => {
+    this.props.favesall.forEach(fave => {
+      if(d.getAttribute('data') === fave.museum_id) {
+        d.childNodes[1].classList.add('beyellow')
+      }
+    })
+  })
 }
 
 // !!!!!!!!!!!!!!!
