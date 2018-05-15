@@ -1,7 +1,7 @@
 module.exports = {
 
   handleUserLogin(req, res, next) {
-    res.redirect('/' + res.locals.user.user_id + '/faves');
+    res.json({ token: res.locals.token })
   },
 
   tester(req, res, next) {
@@ -15,7 +15,6 @@ module.exports = {
   },
 
   sendAPI(req, res) {
-    console.log('this si apikey',res.locals.apikey)
     res.json(res.locals.apikey);
   },
 

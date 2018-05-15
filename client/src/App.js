@@ -15,7 +15,8 @@ export default class App extends React.Component {
       museumAll: [],
       faves: [],
       museumid: '',
-      city: ''
+      city: '',
+      auth: false
     };
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
     this.affectFavesList = this.affectFavesList.bind(this);
@@ -107,86 +108,68 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+        <div>
         <header>
-            <h1>Night At The Museum</h1>
-
-            <a className="navlinks" href="/login"> Home </a>
-            <a className="navlinks" href="/search"> Search </a>
-
+          <h1>Night At The Museum</h1>
+          <a className="navlinks" href="/login"> Home </a>
+          <a className="navlinks" href="/search"> Search </a>
         </header>
-
-            <Switch>
-              <Route
-                path="/museum/:museumid"
-                render={() => (
-                  <Museums
-                    museumall={this.state.museumAll}
-                    changeMuseum={this.affectMuseumAll}
-                    favesall={this.state.faves}
-                    updateFaves={this.affectFavesList}
-                    delFaves={this.delFaves}
-                    museumid={this.state.museumid}
-                    city={this.state.city}
-                  />)}
-              />
-              <Route
-                path="/:userid/faves"
-                render={() => (
-                  <UserProfile
-                    museumall={this.state.museumAll}
-                    changeMuseum={this.affectMuseumAll}
-                    favesall={this.state.faves}
-                    updateFaves={this.affectFavesList}
-                    delFaves={this.delFaves}
-                    sendID={this.sendID}
-                  />)}
-              />
-              <Route
-                path="/search"
-                render={() => (
-                  <Search
-                    museumall={this.state.museumAll}
-                    changeMuseum={this.affectMuseumAll}
-                    favesall={this.state.faves}
-                    updateFaves={this.affectFavesList}
-                    delFaves={this.delFaves}
-                    sendID={this.sendID}
-                    toggle={this.toggleFave}
-                  />)}
-              />
-              <Route path="/register" component={Register} />
-              <Route path="/login" component={Login} />
-              <Route
-                exact
-                path="/"
-                render={props => {
-                  return(
-                    <Redirect to="/login" />
-                  )
-                }}
-              />
-            </Switch>
-
-
-
-
-
-
-
-
-
-
-
+          <Switch>
+            <Route
+              path="/museum/:museumid"
+              render={() => (
+                <Museums
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.affectFavesList}
+                  delFaves={this.delFaves}
+                  museumid={this.state.museumid}
+                  city={this.state.city}
+                />)}
+            />
+            <Route
+              path="/:userid/faves"
+              render={() => (
+                <UserProfile
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.affectFavesList}
+                  delFaves={this.delFaves}
+                  sendID={this.sendID}
+                />)}
+            />
+            <Route
+              path="/search"
+              render={() => (
+                <Search
+                  museumall={this.state.museumAll}
+                  changeMuseum={this.affectMuseumAll}
+                  favesall={this.state.faves}
+                  updateFaves={this.affectFavesList}
+                  delFaves={this.delFaves}
+                  sendID={this.sendID}
+                  toggle={this.toggleFave}
+                />)}
+            />
+            <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
+            <Route
+              exact
+              path="/"
+              render={props => {
+                return(
+                  <Redirect to="/login" />
+                )
+              }}
+            />
+          </Switch>
           <div className="Footer">
-
-            <h4> © Made by the best DALP you'll ever meet</h4>
-
-
-
-          </div>
+          <h4> © Made by the best DALP you'll ever meet</h4>
         </div>
-    );
+      </div>
+      );
   }
 }
 

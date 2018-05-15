@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import TokenService from './TokenService';
 
 class Search extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Search extends React.Component {
       // zipcode: '',
       city: '',
       results: '',
+      userid: 0
       // name: '',
     }
 
@@ -35,6 +37,27 @@ handleToggle(data) {
       this.props.toggle(data)
     }
   })
+}
+
+componentWillMount() {
+  let token = TokenService.read();
+  fetch('/token', {
+    body: JSON.stringify({token}),
+    headers: {
+      'content-type': 'application/json'
+    },
+    method: 'POST'
+  })
+  .then(response => response.json())
+    .then(payload => {
+      if(Object.keys(payload).length === 4) {
+        this.setState({
+          userid: payload.user_id
+        })
+      } else {
+        window.location.replace(`/login`)
+      }
+    })
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!
@@ -68,7 +91,7 @@ getData(e) {
   city = city.split(' ').join('+');
   city = city.split(',').join('+');
   console.log(`i am `, city)
-  fetch(`/api/3/faves`)
+  fetch(`/api/${this.state.userid}/faves`)
   .then(response => response.json())
     .then(data => {
       this.props.updateFaves(data)

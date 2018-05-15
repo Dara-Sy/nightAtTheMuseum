@@ -1,4 +1,5 @@
 import React from 'react';
+import TokenService from './TokenService';
 
 class Museums extends React.Component {
   constructor(props){
@@ -11,6 +12,7 @@ class Museums extends React.Component {
       apikey: '',
       photo: '',
       rating: '',
+      userid: 0,
     }
     this.deleteComment = this.deleteComment.bind(this);
     this.submitComment = this.submitComment.bind(this);
@@ -62,52 +64,69 @@ class Museums extends React.Component {
   }
 
   componentWillMount() {
-    console.log('this is theprops', this.props)
-    fetch(`/api/museum/${this.props.museumid}`)
+    let token = TokenService.read();
+    fetch('/token', {
+      body: JSON.stringify({token}),
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    })
     .then(response => response.json())
-      .then(data => {
-          fetch(`/api/secret`)
+      .then(payload => {
+        if(Object.keys(payload).length === 4) {
+          let user_id = payload.user_id;
+          this.setState({
+            userid: user_id
+          })
+          fetch(`/api/museum/${this.props.museumid}/${user_id}`)
           .then(response => response.json())
-            .then(apikey => {
-              const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${this.props.city}&key=${apikey}`
-              fetch(url)
-                .then( response => response.json())
-                  .then(result => {
-                    console.log('thisisresult',result)
-                    if(result.status !== 'OK') {
-                      console.log('result was bad')
-                      this.setState({
-                        forcererender: true
-                      })
-                      this.forceRender();
-                    } else {
-                      let theMuseum = ''
-                      console.log('thisisdata', data)
-                      result.results.forEach(element => {
-                        if(element.id === this.props.museumid) {
-                          theMuseum = element;
-                        }
-                      })
-                      this.setState({
-                        onemuseum: theMuseum,
-                        userdata: data,
-                        photo: this.killArray(theMuseum.photos).photo_reference,
-                        apikey: apikey
-                      })
+            .then(data => {
+                fetch(`/api/secret`)
+                .then(response => response.json())
+                  .then(apikey => {
+                    const url = `https://accesscontrolalloworiginall.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=museums+in+${this.props.city}&key=${apikey}`
+                    fetch(url)
+                      .then( response => response.json())
+                        .then(result => {
+                          console.log('thisisresult',result)
+                          if(result.status !== 'OK') {
+                            console.log('result was bad')
+                            this.setState({
+                              forcererender: true
+                            })
+                            this.forceRender();
+                          } else {
+                            let theMuseum = ''
+                            console.log('thisisdata', data)
+                            result.results.forEach(element => {
+                              if(element.id === this.props.museumid) {
+                                theMuseum = element;
+                              }
+                            })
+                            this.setState({
+                              onemuseum: theMuseum,
+                              userdata: data,
+                              photo: this.killArray(theMuseum.photos).photo_reference,
+                              apikey: apikey
+                            })
 
-                      if(this.state.onemuseum.opening_hours.open_now === true) {
-                        this.setState({
-                          isopen: 'Open now'
-                        })
-                      } else {
-                        this.setState({
-                          isopen: 'Currently closed.'
-                        })
-                      }
-                    }
-              })
-            })
-
+                            if(this.state.onemuseum.opening_hours.open_now === true) {
+                              this.setState({
+                                isopen: 'Open now'
+                              })
+                            } else {
+                              this.setState({
+                                isopen: 'Currently closed.'
+                              })
+                            }
+                          }
+                    })
+                  })
+          })
+        } else {
+          window.location.replace('/login')
+        }
       })
   }
 
@@ -115,7 +134,7 @@ class Museums extends React.Component {
     let textBox = document.querySelector('textarea')
     let ratingBox = document.getElementById('rating')
     if(textBox.value !== '' && ratingBox !== '') {
-      const postURL = `/api/museum/${this.props.museumid}`
+      const postURL = `/api/museum/${this.props.museumid}/${this.state.userid}`
       let theData = {
         comments: document.querySelector('#comments').value,
         rating: document.querySelector('#rating').value,

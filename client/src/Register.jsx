@@ -1,4 +1,5 @@
 import React from 'react';
+import TokenService from './TokenService';
 
 export default class Register extends React.Component {
   constructor(props) {
@@ -32,7 +33,6 @@ export default class Register extends React.Component {
     } else {
       this.refs.dontmatchmsg.innerText = '';
       let theData = {...this.state};
-      console.log('this is theData', theData)
       fetch('http://localhost:3000/register', {
         body: JSON.stringify(theData),
         cache: 'no-cache',
@@ -45,6 +45,21 @@ export default class Register extends React.Component {
         redirect: 'follow',
         referrer: 'no-referrer',
       })
+      .then(response => response.json())
+        .then(token => {
+          TokenService.save(token)
+          fetch('/token', {
+            body: JSON.stringify(token),
+            headers: {
+              'content-type': 'application/json'
+            },
+            method: 'POST'
+          })
+          .then(response => response.json())
+            .then(data => {
+              window.location.replace(`/${data.user_id}/faves`)
+            })
+        })
     }
   }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TokenService from './TokenService';
 
 
 class UserProfile extends React.Component{
@@ -27,14 +28,26 @@ class UserProfile extends React.Component{
     // get call from comment table to return isfave and comments
     // to make sure it can compare isfave is true or false
   componentWillMount(){
-    fetch(`/api/3/faves/`)
+    let token = TokenService.read();
+    fetch('/token', {
+      body: JSON.stringify({token}),
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    })
     .then(response => response.json())
-      .then(data => {
-        console.log('this is props', this.props)
-        this.props.updateFaves(data)
-      })
-      .catch(err => {
-        console.log(err)
+      .then(payload => {
+        if(Object.keys(payload).length === 4) {
+          let user_id = payload.user_id;
+          fetch(`/api/${user_id}/faves/`)
+          .then(response => response.json())
+            .then(data => {
+              this.props.updateFaves(data)
+            })
+        } else {
+          window.location.replace(`/login`)
+        }
       })
   }
 

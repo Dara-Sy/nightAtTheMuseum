@@ -11,12 +11,18 @@ app.route('/register')
     authService.doesUserExist,
     authService.generatePassword,
     authService.registerUser,
+    authService.isValidUser,
     authService.authenticate,
-    resHandler.handleUserLogin
+    resHandler.handleUserLogin,
+  )
+
+app.post('/token',
+  tokenService.verify
   )
 
 app.route('/login')
   .post(
+    authService.isValidUser,
     authService.authenticate,
     resHandler.handleUserLogin,
   )

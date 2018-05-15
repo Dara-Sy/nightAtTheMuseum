@@ -3,20 +3,19 @@ const model = require('../server/models');
 const TokenService = require('./TokenService');
 
 
-const isValidUser = async (data) => {
-  try {
-    const user = await model.findOneUser(data.username);
-    console.log('pass is: ', data.password)
-    console.log('user is: ', user)
-    console.log('hash is: ', user.password_digest)
-    return await bcrypt.compare(data.password, killArray(user).password_digest);
-  } catch (err) {
-    console.error(err);
-    return false;
-  }
-};
 
 module.exports = {
+  async isValidUser(req, res, next) {
+    try {
+      const user = await model.findOneUser(req.body.username);
+      res.locals.user = user;
+      res.locals.ispassgood = await bcrypt.compare(req.body.password, user[0].password_digest);
+      next()
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
   async generatePassword(req, res, next) {
     const { password } = req.body;
     await bcrypt.hash(password, 11)
@@ -33,7 +32,6 @@ module.exports = {
   doesUserExist(req, res, next) {
     model.findOneUser(req.body.username)
       .then(data => {
-        console.log('this is ',data)
         if(data.length === 0){
           next();
         } else {
@@ -57,12 +55,11 @@ module.exports = {
   },
 
   authenticate(req, res, next) {
-    if (!isValidUser(req.body)) {
+    if (res.locals.ispassgood === false) {
       return next({});
     }
     TokenService.makeToken({
-      username: req.body.username,
-      roles:    ['admin'],
+      user_id: res.locals.user[0].user_id,
     })
       .then((token) => {
         res.locals.token = token;

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 module.exports = {
@@ -8,20 +9,17 @@ module.exports = {
         process.env.SERVER_SECRET,
         {
         expiresIn: '1h',
-          issuer:    'dresselhaus',
+          issuer:    'Group DALP',
         },
         (err, data) => err ? reject(err) : resolve(data),
       ),
     );
   },
 
-  verify(token) {
-    return new Promise((resolve, reject) =>
-      jwt.verify(token,
-        process.env.SERVER_SECRET,
-        (err, data) => err ? reject(err) : resolve(data),
-      ),
-    );
+  verify(req, res) {
+    res.json(jwt.verify(req.body.token,
+      process.env.SERVER_SECRET
+    ))
   },
 
   receiveToken(req, res, next) {

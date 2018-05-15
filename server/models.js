@@ -18,7 +18,7 @@ module.exports = {
   },
 
   getAllFaves(userid) {
-    return db.many(`
+    return db.any(`
       SELECT
         users.user_id,
         users.username,
@@ -32,7 +32,7 @@ module.exports = {
       `, userid);
   },
 
-  getOneFave(museum_id) {
+  getOneFave(data) {
     return db.any(`
       SELECT comments.*, favemuseums.*, users.username
         FROM users
@@ -40,8 +40,9 @@ module.exports = {
           ON users.user_id = favemuseums.user_id
         LEFT OUTER JOIN comments
           ON comments.museum_id = favemuseums.museum_id
-       WHERE favemuseums.museum_id = $1
-        `, museum_id);
+       WHERE favemuseums.museum_id = $/museumid/
+          AND users.user_id = $/userid/
+        `, data);
   },
 
   destroyMuseum(data) {

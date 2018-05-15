@@ -1,4 +1,5 @@
 import React from 'react';
+import TokenService from './TokenService';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -33,6 +34,23 @@ export default class Login extends React.Component {
       redirect: 'follow',
       referrer: 'no-referrer',
     })
+    .then(response => response.json())
+      .then(token => {
+        TokenService.save(token)
+        console.log('we have token', token)
+        fetch('/token', {
+          body: JSON.stringify(token),
+          headers: {
+            'content-type': 'application/json'
+          },
+          method: 'POST'
+        })
+        .then(response => response.json())
+          .then(data => {
+            console.log('thisisreturnedtoken', data)
+            window.location.replace(`/${data.user_id}/faves`)
+          })
+      })
   }
 
   render(props) {

@@ -44,7 +44,7 @@ module.exports = {
   async getFave(req, res, next) {
     // checks db to see if you favorited this museum
     try {
-      res.locals.museum = await museumDB.getOneFave(req.params.museumid);
+      res.locals.museum = await museumDB.getOneFave(req.params);
       next();
     } catch (e) {
       console.log(e);
