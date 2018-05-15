@@ -85,14 +85,14 @@ getData(e) {
                   let url = `/museum/${element.id}`
                   return (
                     <section className="searchResults" key={i}>
+                      <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
                         <i
-                          class="fas fa-university fa-5x"
+                          class="fas fa-university fa-3x"
                           aria-hidden="true">
                         </i>
-                      <div className="searchRes" data={element.id}>
-                      <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
-                        <h2>{element.name}</h2>
                       </Link>
+                      <div className="searchRes" data={element.id}>
+                        <h2>{element.name}</h2>
                         <i
                           class="fas fa-star fa-2x"
                           onClick={() => {this.handleToggle(element)}}>
@@ -162,9 +162,9 @@ render(props) {
 
 
   return(
-    <main>
+    <main className="mainish">
       <section className="searchContainer">
-        <h2>Search</h2>
+        <h2 className="srchbar" >Search</h2>
         <form id="form">
           <input className="searchInput"
            type="text"

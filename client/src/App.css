@@ -200,6 +200,16 @@ a:active {
   margin-top: 120px;
 }
 
+.srchbar {
+  margin-top: 145px;
+}
+
+.mainish{
+  /*display: block;*/
+  /*height: 842px;*/
+  width: 940px;
+}
+
 
 .searchRes {
   padding-left: 5px;
