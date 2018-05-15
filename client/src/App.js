@@ -1,5 +1,5 @@
 import React  from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import Search from './Search';
 import Register from './Register';
@@ -45,16 +45,16 @@ export default class App extends React.Component {
     })
   }
 
-  delFaves(commentsid) {
+  delFaves(user) {
     let newFaves = this.state.museum.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === commentsid) {
+      if(d.museum_id === user.museum_id) {
         index = i;
       }
     })
     let data = newFaves.splice(index, 1)
-    fetch(`/${commentsid}/faves/:faves_id`, {
+    fetch(`/${user.user_id}/faves/:faves_id`, {
       body: JSON.stringify(data),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -85,7 +85,7 @@ export default class App extends React.Component {
             <a className="navlinks" href="/search"> Search </a>
 
         </header>
-          <main>
+
             <Switch>
               <Route
                 path="/museum/:museumid"
@@ -109,7 +109,6 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
-                    sendID={this.sendID}
                   />)}
               />
               <Route
@@ -121,14 +120,27 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
-                    sendID={this.sendID}
                   />)}
               />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
-              <Route path="/" />
+              <Route
+                exact
+                path="/"
+                render={props => {
+                  return(
+                    <Redirect to="/login" />
+                  )
+                }}
+              />
             </Switch>
-          </main>
+
+
+
+
+
+
+
 
 
 
@@ -148,3 +160,5 @@ export default class App extends React.Component {
 
 // <i class="fa fa-car" aria-hidden="true"></i>
 // <span class="fa-twitter fa"></span>
+
+// <Route path="/" component={<Redirect to="/login" />} />
