@@ -34,6 +34,10 @@ Updated faves table in ERD
 
 ![1](https://git.generalassemb.ly/DAP/project-3/blob/master/faves%20table.jpg)
 
+## React Tree: 
+
+![1](https://git.generalassemb.ly/DAP/nightAtTheMuseum/commit/9da6bb4c836a24cc27135870b680601fa3ccfad3)
+
 
 ## Technologies: 
 - React - used to render the views of the CRUD app
