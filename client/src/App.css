@@ -66,7 +66,7 @@ header {
 .NavimgReg {
     overflow: hidden;
     /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
-    background-image: url("http://res.cloudinary.com/daracell/image/upload/v1526314257/NightMuseum.jpg");
+    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_700/v1526314257/NightMuseum.jpg");
     background-repeat: none;
     /*text-align: center;*/
     color: color;
@@ -180,11 +180,11 @@ a:active {
 .searchResults {
   padding-left: 5px;
   text-align: left;
-  /*display: inline-block;*/
+  display: inline-block;
   margin-left: 16px;
   color: black;
   display: inline-block;
-  /*margin-left: 16px;*/
+  margin-left: 16px;
   /*padding: 3px;*/
   margin-top: 20px;
 }
@@ -197,13 +197,13 @@ a:active {
   color: black;
 }
 
-.searchResUP {
-  /*padding-left: 5px;*/
-  /*text-align: left;*/
+/*.searchResUP {
+  padding-left: 5px;
+  text-align: left;
   display: block;
-  /*margin-left: 16px;*/
+  margin-left: 16px;
   color: black;
-}
+}*/
 
 .local {
   font-size: 15pt;
@@ -230,7 +230,7 @@ a:active {
 }
 
 .Footer {
-   position:relative;
+   position:fixed;
    left:0px;
    bottom:15px;
    /*top: 500px;*/
@@ -326,7 +326,28 @@ img {
   height: 25em;
   width: 50em;
 }
+.fortextbox {
+  display: block;
+  hight: 200px;
+  width: 100px;
+  margin-left: 45%;
 
+}
+.cmtbox {
+/*  width: 150px;
+  height: 25px;*/
+  margin-top: 10px;
+  /*padding-bottom: 20px;*/
+}
+
+.cmtbox1 {
+/*  width: 150px;
+  height: 25px;*/
+  margin-bottom: 10px;
+  /*margin-left: 5px;*/
+  margin-top: 10px;
+
+}
 
 
 .logInput {

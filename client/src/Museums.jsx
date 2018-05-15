@@ -213,9 +213,9 @@ class Museums extends React.Component {
           <h4>{this.state.onemuseum.formatted_address}</h4>
           <p>{this.amIOpen()}</p>
           <div className="fortextbox">
-          <textarea id="comments" required></textarea>
-          <input type="text" id="rating" required/>
+          <textarea className="cmtbox" placeholder="Comments" id="comments" required></textarea>
           <input type="hidden" id="user_id" value="3" />
+          <input className="cmtbox1" placeholder="Rating" type="text" id="rating" required/>
           <div>
             <button className="button" onClick={() => {this.submitComment()}}>Submit Comment</button>
           </div>
