@@ -138,9 +138,9 @@ Include the full list of features that you are considering for POST MVP
 |   --- |   :---:   |   :---:   |   :---:   | 
 |   Readme   |   Server: Models   |   React: Museums   |   Starting Templates   |
 |   Server: Render    |   Server: Routes   |   React: Faves |   Login  |
-|   Server: Controllers    |    CSS      |  React: User Profile    |  Register  | 
-|   CSS    |        |      |  Server  | 
-|       |         |      |  Search  | 
+|   Server: Controllers    |    React: Search      |  React: User Profile    |  Register  | 
+|   React: Search    |   CSS     |      |  Server  | 
+|   CSS    |         |      |  Search  | 
 
 
 
