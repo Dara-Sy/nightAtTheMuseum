@@ -40,7 +40,7 @@ Updated faves table in ERD
 
 ## Routes Chart
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0111.jpg)
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0112.jpg)
 
 
 ## Technologies: 
