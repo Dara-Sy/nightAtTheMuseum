@@ -113,6 +113,7 @@ export default class App extends React.Component {
 
             <a className="navlinks" href="/login"> Home </a>
             <a className="navlinks" href="/search"> Search </a>
+            <a className="navlinks" href="/:userid/faves"> Profile </a>
 
         </header>
 

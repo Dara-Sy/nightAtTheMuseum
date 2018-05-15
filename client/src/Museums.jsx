@@ -191,7 +191,7 @@ class Museums extends React.Component {
           console.log('thisiselement',element)
           return(
             <div>
-            <div className="thebutton" onClick={() => this.deleteComment(element.comments_id)}></div>
+            <div className="delbtn" i className="fas fa-times-circle" onClick={() => this.deleteComment(element.comments_id)}></div>
             <section key={i} className="thecomments">
               <div onClick={() => this.handleEdit(element)}>
                 <h3>{element.username} says:</h3>
