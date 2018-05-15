@@ -38,6 +38,10 @@ Updated faves table in ERD
 
 ![1](https://git.generalassemb.ly/DAP/project-3/blob/master/appjs.jpg)
 
+## Routes Chart
+
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0111.jpg)
+
 
 ## Technologies: 
 - React - used to render the views of the CRUD app
