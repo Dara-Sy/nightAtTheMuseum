@@ -49,13 +49,14 @@ Updated faves table in ERD
 - Google Maps API - to map/locate the museums
 
 ## Installation Instructions: 
-- Go into my repo
+- Go into this repo
 - Fork and Git Clone
 - Go into the Terminal Command Line
-- subl . 
 - npm i 
 - npm init 
-- npm run dev
+- npm bothdev
+- subl . 
+- npm run bothdev
 - psql -f db/schema.sql
 
 
