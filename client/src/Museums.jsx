@@ -14,6 +14,7 @@ class Museums extends React.Component {
     }
     this.deleteComment = this.deleteComment.bind(this);
     this.submitComment = this.submitComment.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   forceRender() {
@@ -21,6 +22,14 @@ class Museums extends React.Component {
       forcererender: true
     })
     console.log('thisisforcerender', this.state.forcererender)
+  }
+
+  killArray(thing) {
+    if(Array.isArray(thing)) {
+      return thing[0];
+    } else {
+      return thing;
+    }
   }
 
   deleteComment(commentid) {
@@ -73,15 +82,16 @@ class Museums extends React.Component {
                       this.forceRender();
                     } else {
                       let theMuseum = ''
+                      console.log('thisisdata', data)
                       result.results.forEach(element => {
-                        if(element.id === data[0].museum_id) {
+                        if(element.id === this.props.museumid) {
                           theMuseum = element;
                         }
                       })
                       this.setState({
                         onemuseum: theMuseum,
                         userdata: data,
-                        photo: theMuseum.photos[0].photo_reference,
+                        photo: this.killArray(theMuseum.photos).photo_reference,
                         apikey: apikey
                       })
 
@@ -102,34 +112,40 @@ class Museums extends React.Component {
   }
 
   submitComment() {
-    console.log('I AM RUNNNNNINNNGGGG')
-    const postURL = `/api/museum/${this.props.museumid}`
-    let theData = {
-      comments: document.querySelector('#comments').value,
-      rating: document.querySelector('#rating').value,
-      user_id: document.querySelector('#user_id').value,
-      isfave: document.querySelector('#isfave').checked
-    }
-    fetch(postURL, {
-      body: JSON.stringify({theData: theData}),
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: {
-        'content-type': 'application/json'
-      },
-      method: 'POST',
-      mode: 'cors',
-      redirect: 'follow',
-      referrer: 'no-referrer',
-    })
-    .then(response => response.json())
-      .then(data => {
-        let oldArray = this.state.userdata.slice();
-        oldArray.unshift(data);
-        this.setState({
-          userdata: oldArray
-        })
+    let textBox = document.querySelector('textarea')
+    let ratingBox = document.getElementById('rating')
+    if(textBox.value !== '' && ratingBox !== '') {
+      const postURL = `/api/museum/${this.props.museumid}`
+      let theData = {
+        comments: document.querySelector('#comments').value,
+        rating: document.querySelector('#rating').value,
+        user_id: document.querySelector('#user_id').value
+      }
+      fetch(postURL, {
+        body: JSON.stringify({theData: theData}),
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'content-type': 'application/json'
+        },
+        method: 'POST',
+        mode: 'cors',
+        redirect: 'follow',
+        referrer: 'no-referrer',
       })
+      .then(response => response.json())
+        .then(data => {
+          let oldArray = this.state.userdata.slice();
+          oldArray.unshift(data);
+          this.setState({
+            userdata: oldArray
+          })
+          textBox.value = '';
+          ratingBox.value = '';
+        })
+    } else {
+      alert('Fill out all the boxes')
+    }
   }
 
 
@@ -139,6 +155,14 @@ class Museums extends React.Component {
         forcererender: false
       })
     }
+  }
+
+  handleEdit(data) {
+    let textBox = document.querySelector('textarea')
+    let ratingBox = document.getElementById('rating')
+    textBox.value = data.comments;
+    ratingBox.value = data.rating;
+    this.deleteComment(data.comments_id);
   }
 
   amIOpen() {
@@ -152,24 +176,35 @@ class Museums extends React.Component {
   }
 
   render(props){
-    console.log(this.state.userdata)
-    const userData = this.state.userdata.map((element, i) => {
-      return(
-        <div>
-          {/*<a className="icon" onClick={() =>
-            this.deleteComment(element.comments_id)}>
-          <i className="fas fa-times-circle"></i>
-        </a>*/}
-        <div className="thebutton" onClick={() => this.deleteComment(element.comments_id)}></div>
-        <section key={i} className="thecomments">
-          <h3>{element.username} says:</h3>
-          <p>{element.comments}</p>
-          <p>Rating: {element.rating}</p>
-          <hr />
-        </section>
-        </div>
-      )
-    })
+    console.log('comments', this.state.userdata[0])
+    console.log('comments', this.state.userdata)
+    if(this.state.userdata.length !== 0) {
+      if(this.killArray(this.state.userdata).comments === null) {
+        var userData = this.state.userdata.map(e => {
+          return(
+            <div>
+            </div>
+          )
+        })
+      } else {
+        var userData = this.state.userdata.map((element, i) => {
+          console.log('thisiselement',element)
+          return(
+            <div>
+            <div className="thebutton" onClick={() => this.deleteComment(element.comments_id)}></div>
+            <section key={i} className="thecomments">
+              <div onClick={() => this.handleEdit(element)}>
+                <h3>{element.username} says:</h3>
+                <p>{element.comments}</p>
+                <p>Rating: {element.rating}</p>
+              </div>
+              <hr />
+            </section>
+            </div>
+          )
+        })
+      }
+    }
     return(
       <div className="museumcontainer">
         <section className="museumSection">
@@ -178,11 +213,11 @@ class Museums extends React.Component {
           <h4>{this.state.onemuseum.formatted_address}</h4>
           <p>{this.amIOpen()}</p>
           <div className="fortextbox">
-          <textarea id="comments"></textarea>
-          <input type="text" id="rating" />
+          <textarea id="comments" required></textarea>
+          <input type="text" id="rating" required/>
           <input type="hidden" id="user_id" value="3" />
           <div>
-            <button className="button" onClick={() => {this.submitComment()}}>CLICK ME</button>
+            <button className="button" onClick={() => {this.submitComment()}}>Submit Comment</button>
           </div>
           </div>
           <hr />

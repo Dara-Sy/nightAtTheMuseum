@@ -14,14 +14,27 @@ class Search extends React.Component {
 
     this.getData = this.getData.bind(this);
     this.newSearch = this.newSearch.bind(this);
-    // this.renderMuseums = this.renderMuseums.bind(this);
+    // this.handleToggle = this.handleToggle.bind(this);
   }
 
 newSearch(e) {
   this.setState({
     city: e.target.value
   });
-  console.log(`I am what yu search`, this.state.city)
+}
+
+handleToggle(data) {
+  let theMuseums = document.querySelectorAll('.searchRes')
+  theMuseums.forEach(d => {
+    if(d.getAttribute('data') === data.id) {
+      if(d.childNodes[1].classList.contains('beyellow')){
+        d.childNodes[1].classList.remove('beyellow')
+      } else {
+        d.childNodes[1].classList.add('beyellow')
+      }
+      this.props.toggle(data)
+    }
+  })
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!
@@ -68,17 +81,22 @@ getData(e) {
             .then(data => {
               this.props.changeMuseum(data.results)
                 const toRender = this.props.museumall.map((element, i) => {
+                  console.log(element)
                   let url = `/museum/${element.id}`
                   return (
                     <section className="searchResults" key={i}>
                       <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
-                        <i class="fas fa-university fa-5x" aria-hidden="true">
+                        <i
+                          class="fas fa-university fa-5x"
+                          aria-hidden="true">
                         </i>
                       </Link>
                       <div className="searchRes" data={element.id}>
                         <h2>{element.name}</h2>
-                        <i class="fas fa-star fa-2x" onClick=""></i>
-
+                        <i
+                          class="fas fa-star fa-2x"
+                          onClick={() => {this.handleToggle(element)}}>
+                        </i>
                         <h2 className="local">{element.formatted_address}</h2>
                       </div>
                     </section>
@@ -86,6 +104,14 @@ getData(e) {
                 })
               this.setState({
                 results: toRender
+              })
+              let theMuseums = document.querySelectorAll('.searchRes')
+              theMuseums.forEach(d => {
+                this.props.favesall.forEach(fave => {
+                  if(d.getAttribute('data') === fave.museum_id) {
+                    d.childNodes[1].classList.add('beyellow')
+                  }
+                })
               })
             })
         })

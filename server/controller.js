@@ -44,7 +44,6 @@ module.exports = {
   async getFave(req, res, next) {
     // checks db to see if you favorited this museum
     try {
-      console.log('this is running', req.params)
       res.locals.museum = await museumDB.getOneFave(req.params.museumid);
       next();
     } catch (e) {
@@ -64,8 +63,7 @@ module.exports = {
         museum_id: req.params.museumid,
         comments: req.body.theData.comments,
         rating: req.body.theData.rating,
-        user_id: parseInt(req.body.theData.user_id),
-        isfave: req.body.theData.isfave
+        user_id: parseInt(req.body.theData.user_id)
       }
       console.log('this is thedata', theData)
       res.locals.museum = await museumDB.createComment(theData);
@@ -92,7 +90,26 @@ module.exports = {
     // hit the db to unfavorite something
     try {
       // passing 1 thing with 2 keys userid and favesid
-      res.locals.museum = await museumDB.destroyComments(req.params.commentid);
+      let theData = {
+        userid: parseInt(req.params.userid),
+        museumid: req.body.museum_id
+      }
+      res.locals.museum = await museumDB.destroyMuseum(theData);
+      next();
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  async addMuseum(req, res, next) {
+    try {
+      let theData = {
+        museum_id: req.body.id,
+        name: req.body.name,
+        address: req.body.formatted_address,
+        user_id: parseInt(req.params.userid)
+      }
+      res.locals.museum = await museumDB.addOneMuseum(theData);
       next();
     } catch (e) {
       next(e);

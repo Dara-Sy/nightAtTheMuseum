@@ -20,6 +20,8 @@ export default class App extends React.Component {
     this.affectMuseumAll = this.affectMuseumAll.bind(this);
     this.affectFavesList = this.affectFavesList.bind(this);
     this.sendID = this.sendID.bind(this);
+    this.delFaves = this.delFaves.bind(this);
+    this.toggleFave = this.toggleFave.bind(this);
   }
 
   affectMuseumAll(newArray) {
@@ -45,21 +47,50 @@ export default class App extends React.Component {
     })
   }
 
-  delFaves(user) {
-    let newFaves = this.state.museum.slice();
+  toggleFave(data) {
+    let theFaves = this.state.faves.slice();
+    let exists = false;
+    let index = 0;
+    theFaves.forEach((d, i) => {
+      if(d.museum_id === data.id) {
+        exists = true;
+        index = i;
+      }
+    })
+    if(exists === true) {
+      this.delFaves(theFaves[index].museum_id)
+    } else {
+      fetch(`/api/3/faves`, {
+        body: JSON.stringify(data),
+        headers: {
+          'content-type': 'application/json'
+        },
+        method: 'POST'
+      })
+      .then(response => response.json())
+        .then(data => {
+          theFaves.push(data);
+          this.setState({
+            faves: theFaves
+          })
+        })
+    }
+  }
+
+  delFaves(museumid) {
+    let newFaves = this.state.faves.slice();
     let index = 0;
     newFaves.forEach((d, i) => {
-      if(d.museum_id === user.museum_id) {
+      if(d.museum_id === museumid) {
         index = i;
       }
     })
     let data = newFaves.splice(index, 1)
-    fetch(`/${user.user_id}/faves/:faves_id`, {
-      body: JSON.stringify(data),
+    fetch(`/api/3/faves`, {
+      body: JSON.stringify(data[0]),
       cache: 'no-cache',
       credentials: 'same-origin',
       headers: {
-        'user-agent': 'Mozilla/4.0 MDN Example',
         'content-type': 'application/json'
       },
       method: 'DELETE',
@@ -67,12 +98,11 @@ export default class App extends React.Component {
       redirect: 'follow',
       referrer: 'no-referrer',
     })
-    .then(response => response.json())
-      .then((response) => {
-        this.setState({
-          museum: newFaves
-        })
+    .then((response) => {
+      this.setState({
+        faves: newFaves.slice()
       })
+    })
   }
 
   render() {
@@ -122,6 +152,7 @@ export default class App extends React.Component {
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
                     sendID={this.sendID}
+                    toggle={this.toggleFave}
                   />)}
               />
               <Route path="/register" component={Register} />

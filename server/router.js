@@ -7,8 +7,12 @@
 
 
 
-  router.route('/:commentid/faves')
+  router.route('/:userid/faves/')
     // React sends userid, favesid
+    .post(
+      controller.addMuseum,
+      resHandler.sendJSON
+      )
     .delete(
       controller.delFaves,
       resHandler.handleDel

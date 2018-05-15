@@ -54,32 +54,28 @@ class UserProfile extends React.Component{
   // and show results in table
   render(){
    let FavesList = this.props.favesall.map((element, i) => {
-          let city = element.address.split(' ').join('+');
-          city = city.split(',').join('+')
-          city = city.split('++').join('+')
-          console.log('this is city', city)
-          console.log('thisis id', element.museum_id)
-          let url = `/museum/${element.museum_id}`
-          return(
+    let city = element.address.split(' ').join('+');
+    city = city.split(',').join('+')
+    city = city.split('++').join('+')
+    console.log('this is city', city)
+    console.log('thisis id', element.museum_id)
+    let url = `/museum/${element.museum_id}`
+    return(
 
-            <section className="searchResults" key={i}>
-
-              <div className="searchResults">
-            <Link to={url} onClick={() => {this.props.sendID(element.museum_id, city)}}>
-              <h2>{element.name}</h2>
-
-              <h2 className="local">{element.address}</h2>
-              </Link>
-              <span className="delbtn">
-              <a className="icon" onClick={() =>
-                this.props.delFaves()}>
-                  <i className="fas fa-times-circle"></i>
-              </a>
-            </span>
-              </div>
-              </section>);
-
-        })
+      <section className="searchResults" key={i}>
+        <div className="searchResults">
+          <Link to={url} onClick={() => {this.props.sendID(element.museum_id, city)}}>
+            <h2>{element.name}</h2>
+            <h2 className="local">{element.address}</h2>
+          </Link>
+          <span className="delbtn">
+            <i className="fas fa-times-circle" onClick={() =>
+              this.props.delFaves(element.museum_id)}></i>
+          </span>
+        </div>
+      </section>
+    );
+  })
 
     return(
       <div>
@@ -92,7 +88,7 @@ class UserProfile extends React.Component{
           {FavesList}
         </div>
       </div>
-      )
+    );
   }
 }
 

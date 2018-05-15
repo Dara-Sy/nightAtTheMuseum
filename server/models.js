@@ -35,21 +35,22 @@ module.exports = {
   getOneFave(museum_id) {
     return db.any(`
       SELECT comments.*, favemuseums.*, users.username
-        FROM comments
+        FROM users
         JOIN favemuseums
-          ON favemuseums.museum_id = comments.museum_id
-        JOIN users
           ON users.user_id = favemuseums.user_id
+        LEFT OUTER JOIN comments
+          ON comments.museum_id = favemuseums.museum_id
        WHERE favemuseums.museum_id = $1
         `, museum_id);
   },
 
-  destroyMuseum(museumid) {
+  destroyMuseum(data) {
     return db.none(`
       DELETE
         FROM favemuseums
-       WHERE museum_id = $1,
-          `, favesid);
+       WHERE user_id = $/userid/
+        AND museum_id = $/museumid/
+          `, data);
   },
 
   destroyComments(commentsid) {
@@ -74,11 +75,21 @@ module.exports = {
   createComment(data) {
     return db.one(`
       INSERT INTO comments
-        (museum_id, comments, rating, user_id, isfave)
+        (museum_id, comments, rating, user_id)
       VALUES
-        ($/museum_id/, $/comments/, $/rating/, $/user_id/, $/isfave/)
+        ($/museum_id/, $/comments/, $/rating/, $/user_id/)
       RETURNING *
     `, data);
+  },
+
+  addOneMuseum(data) {
+    return db.one(`
+      INSERT INTO favemuseums
+        (museum_id, name, address, user_id)
+      VALUES
+        ($/museum_id/, $/name/, $/address/, $/user_id/)
+      RETURNING *
+      `, data);
   },
 
     // updateComments(data) {
