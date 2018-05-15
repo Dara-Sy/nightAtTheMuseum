@@ -128,6 +128,9 @@ class Museums extends React.Component {
           window.location.replace('/login')
         }
       })
+      .catch( err => {
+        window.location.replace('/login')
+      })
   }
 
   submitComment() {

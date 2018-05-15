@@ -57,7 +57,10 @@ componentWillMount() {
       } else {
         window.location.replace(`/login`)
       }
-    })
+  })
+  .catch( err => {
+    window.location.replace(`/login`)
+  })
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!

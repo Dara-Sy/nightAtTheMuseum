@@ -49,6 +49,9 @@ class UserProfile extends React.Component{
           window.location.replace(`/login`)
         }
       })
+    .catch( err => {
+      window.location.replace(`/login`)
+    })
   }
 
   // delete a favorite
