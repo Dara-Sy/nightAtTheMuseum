@@ -137,8 +137,10 @@ Include the full list of features that you are considering for POST MVP
 |   Dara   |   Lance    |   Arleigh  |  Phil  |
 |   --- |   :---:   |   :---:   |   :---:   | 
 |   Readme   |   Server: Models   |   React: Museums   |   Starting Templates   |
-|   Server: Render    |   Server: Routes   |   React: Faves + User Profile |   Login + Register + Server |
-|   Server: Controllers    |         |      |  Search  | 
+|   Server: Render    |   Server: Routes   |   React: Faves |   Login  |
+|   Server: Controllers    |         |  React: User Profile    |  Register  | 
+|   CSS    |    CSS     |      |  Server  | 
+|       |         |      |  Search  | 
 
 
 
