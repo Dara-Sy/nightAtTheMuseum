@@ -64,6 +64,7 @@ class Museums extends React.Component {
               fetch(url)
                 .then( response => response.json())
                   .then(result => {
+                    console.log('thisisresult',result)
                     if(result.status !== 'OK') {
                       console.log('result was bad')
                       this.setState({
@@ -181,7 +182,7 @@ class Museums extends React.Component {
           <input type="text" id="rating" />
           <input type="hidden" id="user_id" value="3" />
           <div>
-            <button onClick={() => {this.submitComment()}}>CLICK ME</button>
+            <button className="button" onClick={() => {this.submitComment()}}>CLICK ME</button>
           </div>
           </div>
           <hr />

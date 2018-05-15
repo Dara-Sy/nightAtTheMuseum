@@ -71,13 +71,13 @@ getData(e) {
 
 
                         <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
-                          <i class="fas fa-university fa-5x" aria-hidden="true">
+                          <i className="fas fa-university fa-5x" aria-hidden="true">
                           </i>
                         </Link>
                           {/*</a>*/}
                             <div className="searchRes">
                             <h2>{element.name}</h2>
-                            <i class="fas fa-star fa-2x"></i>
+                            <i className="fas fa-star fa-2x"></i>
 
                             <h2 className="local">{element.formatted_address}</h2>
                             </div>
