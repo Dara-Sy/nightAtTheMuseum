@@ -48,6 +48,31 @@ export default class App extends React.Component {
     })
   }
 
+  componentWillMount() {
+    let token = TokenService.read();
+    fetch('/token', {
+      body: JSON.stringify({token}),
+      headers: {
+        'content-type': 'application/json'
+      },
+      method: 'POST'
+    })
+    .then(response => response.json())
+      .then(payload => {
+        if(Object.keys(payload).length === 4) {
+          let user_id = payload.user_id;
+          this.setState({
+            userid: user_id
+          })
+        } else {
+          window.location.replace(`/login`)
+        }
+      })
+    .catch( err => {
+      window.location.replace(`/login`)
+    })
+  }
+
   toggleFave(data) {
     let theFaves = this.state.faves.slice();
     let exists = false;
@@ -61,7 +86,7 @@ export default class App extends React.Component {
     if(exists === true) {
       this.delFaves(theFaves[index].museum_id)
     } else {
-      fetch(`/api/3/faves`, {
+      fetch(`/api/${this.state.userid}/faves`, {
         body: JSON.stringify(data),
         headers: {
           'content-type': 'application/json'

@@ -1,5 +1,5 @@
-const museumDB = require('./models');
 require('dotenv').config();
+const museumDB = require('./models');
 
 module.exports = {
 

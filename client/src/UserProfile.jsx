@@ -6,7 +6,9 @@ import TokenService from './TokenService';
 class UserProfile extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userid: 0,
+    };
 
   }
 
@@ -40,6 +42,9 @@ class UserProfile extends React.Component{
       .then(payload => {
         if(Object.keys(payload).length === 4) {
           let user_id = payload.user_id;
+          this.setState({
+            userid: user_id
+          })
           fetch(`/api/${user_id}/faves/`)
           .then(response => response.json())
             .then(data => {
