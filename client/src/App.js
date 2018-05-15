@@ -107,13 +107,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <body>
         <header>
             <h1>Night At The Museum</h1>
 
             <a className="navlinks" href="/login"> Home </a>
             <a className="navlinks" href="/search"> Search </a>
             <a className="navlinks" href="/:userid/faves"> Profile </a>
+            <a className="navlinks" href="/:userid/faves"> Log Out </a>
 
         </header>
 
@@ -186,7 +187,7 @@ export default class App extends React.Component {
 
 
           </div>
-        </div>
+        </body>
     );
   }
 }

@@ -68,7 +68,7 @@ getData(e) {
   city = city.split(' ').join('+');
   city = city.split(',').join('+');
   console.log(`i am `, city)
-  fetch(`/api/3/faves`)
+  fetch(`/api/1/faves`)
   .then(response => response.json())
     .then(data => {
       this.props.updateFaves(data)
@@ -85,14 +85,14 @@ getData(e) {
                   let url = `/museum/${element.id}`
                   return (
                     <section className="searchResults" key={i}>
-                      <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
                         <i
                           class="fas fa-university fa-5x"
                           aria-hidden="true">
                         </i>
-                      </Link>
                       <div className="searchRes" data={element.id}>
+                      <Link to={url} onClick={() => {this.props.sendID(element.id, city)}}>
                         <h2>{element.name}</h2>
+                      </Link>
                         <i
                           class="fas fa-star fa-2x"
                           onClick={() => {this.handleToggle(element)}}>

@@ -50,7 +50,7 @@ export default class Register extends React.Component {
 
   render(props) {
     return(
-      <main className="Navimg">
+      <main className="NavimgReg">
       <div className="boxReg">
           </div>
         <div className="logInContainer">

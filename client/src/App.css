@@ -17,12 +17,12 @@ body {
   height: 80px;
 }
 
-.App-header {
+/*.App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-}
+}*/
 
 .App-title {
   font-size: 1.5em;
@@ -62,6 +62,21 @@ header {
     width: 100%;
     padding: 10px;
 }
+
+.NavimgReg {
+    overflow: hidden;
+    /*background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_390/v1526275708/Night_cropped.jpg");*/
+    background-image: url("http://res.cloudinary.com/daracell/image/upload/c_scale,h_700/v1526314257/NightMuseum.jpg");
+    background-repeat: none;
+    /*text-align: center;*/
+    color: color;
+    height: 100%;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    padding: 10px;
+}
+
 
 .NavimgSrch {
     overflow: hidden;
@@ -163,8 +178,15 @@ a:active {
 }
 
 .searchResults {
-
+  padding-left: 5px;
+  text-align: left;
   /*display: inline-block;*/
+  margin-left: 16px;
+  color: black;
+  display: inline-block;
+  /*margin-left: 16px;*/
+  /*padding: 3px;*/
+  margin-top: 20px;
 }
 
 .searchRes {
@@ -172,6 +194,14 @@ a:active {
   text-align: left;
   display: inline-block;
   margin-left: 16px;
+  color: black;
+}
+
+.searchResUP {
+  /*padding-left: 5px;*/
+  /*text-align: left;*/
+  display: block;
+  /*margin-left: 16px;*/
   color: black;
 }
 
@@ -200,7 +230,7 @@ a:active {
 }
 
 .Footer {
-   position:fixed;
+   position:relative;
    left:0px;
    bottom:15px;
    /*top: 500px;*/

@@ -63,16 +63,16 @@ class UserProfile extends React.Component{
     return(
 
       <section className="searchResults" key={i}>
-        <div className="searchResults">
+
           <Link to={url} onClick={() => {this.props.sendID(element.museum_id, city)}}>
-            <h2>{element.name}</h2>
+            <h2 className="searchResUP">{element.name}</h2>
             <h2 className="local">{element.address}</h2>
           </Link>
           <span className="delbtn">
             <i className="fas fa-times-circle" onClick={() =>
               this.props.delFaves(element.museum_id)}></i>
           </span>
-        </div>
+
       </section>
     );
   })
