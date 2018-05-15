@@ -36,9 +36,9 @@ export default class App extends React.Component {
   }
 
   sendID(id, city) {
-    if(city === undefined) {
-      city = '';
-    }
+    // if(city === undefined) {
+    //   city = '';
+    // }
     this.setState({
       museumid: id,
       city: city
@@ -109,6 +109,7 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
+                    sendID={this.sendID}
                   />)}
               />
               <Route
@@ -120,6 +121,7 @@ export default class App extends React.Component {
                     favesall={this.state.faves}
                     updateFaves={this.affectFavesList}
                     delFaves={this.delFaves}
+                    sendID={this.sendID}
                   />)}
               />
               <Route path="/register" component={Register} />

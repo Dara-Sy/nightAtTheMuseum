@@ -27,7 +27,7 @@ class UserProfile extends React.Component{
     // get call from comment table to return isfave and comments
     // to make sure it can compare isfave is true or false
   componentWillMount(){
-    fetch(`/api/1/faves/`)
+    fetch(`/api/3/faves/`)
     .then(response => response.json())
       .then(data => {
         console.log('this is props', this.props)
@@ -58,6 +58,7 @@ class UserProfile extends React.Component{
           city = city.split(',').join('+')
           city = city.split('++').join('+')
           console.log('this is city', city)
+          console.log('thisis id', element.museum_id)
           let url = `/museum/${element.museum_id}`
           return(
 
