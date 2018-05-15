@@ -53,7 +53,7 @@ class UserProfile extends React.Component{
   // checking if fave museum id = index of array museum id
   // and show results in table
   render(){
-   let FavesList = this.props.favesall.map((element, i) => {
+    let FavesList = this.props.favesall.map((element, i) => {
     let city = element.address.split(' ').join('+');
     city = city.split(',').join('+')
     city = city.split('++').join('+')
@@ -62,11 +62,10 @@ class UserProfile extends React.Component{
     let url = `/museum/${element.museum_id}`
     return(
 
-      <section className="searchResults" key={i}>
-
+      <section key={i}>
           <Link to={url} onClick={() => {this.props.sendID(element.museum_id, city)}}>
             <h2 className="searchResUP">{element.name}</h2>
-            <h2 className="local">{element.address}</h2>
+            <h2 className="local2">{element.address}</h2>
           </Link>
           <span className="delbtn">
             <i className="fas fa-times-circle" onClick={() =>
@@ -80,11 +79,7 @@ class UserProfile extends React.Component{
     return(
       <div>
         <div className="table">
-         <div>
-          <div>
             <h1>Favorites</h1>
-          </div>
-         </div>
           {FavesList}
         </div>
       </div>
