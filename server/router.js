@@ -5,19 +5,6 @@
  const controller = require('./controller');
 
 
-
-
-  router.route('/:userid/faves/')
-    // React sends userid, favesid
-    .post(
-      controller.addMuseum,
-      resHandler.sendJSON
-      )
-    .delete(
-      controller.delFaves,
-      resHandler.handleDel
-      )
-
   router.route('/:userid/faves')
     // React sends commentid, comment, rating
     // get faves list
@@ -25,10 +12,18 @@
       controller.getAllFaves,
       resHandler.sendJSON
       )
+    .post(
+      controller.addMuseum,
+      resHandler.sendJSON
+      )
     // change comment
     .put(
       controller.updateComment,
       resHandler.sendJSON
+      )
+    .delete(
+      controller.delFaves,
+      resHandler.handleDel
       )
 
   router.route('/museum/:museumid/:userid')
