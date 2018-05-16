@@ -141,7 +141,7 @@ class Museums extends React.Component {
       let theData = {
         comments: document.querySelector('#comments').value,
         rating: document.querySelector('#rating').value,
-        user_id: document.querySelector('#user_id').value
+        user_id: this.state.userid
       }
       fetch(postURL, {
         body: JSON.stringify({theData: theData}),
@@ -157,6 +157,7 @@ class Museums extends React.Component {
       })
       .then(response => response.json())
         .then(data => {
+          console.log('thisisdataaaaa', data)
           let oldArray = this.state.userdata.slice();
           oldArray.unshift(data);
           this.setState({
@@ -198,22 +199,20 @@ class Museums extends React.Component {
   }
 
   render(props){
-    console.log('comments', this.state.userdata[0])
-    console.log('comments', this.state.userdata)
-    if(this.state.userdata.length !== 0) {
-      if(this.killArray(this.state.userdata).comments === null) {
-        var userData = this.state.userdata.map(e => {
+    if(this.state.userdata.length === 0) {
+      // if(this.killArray(this.state.userdata).comments === null) {
+      //   var userData = this.state.userdata.map(e => {
           return(
             <div>
             </div>
           )
-        })
+        // })
       } else {
         var userData = this.state.userdata.map((element, i) => {
           console.log('thisiselement',element)
           return(
             <div>
-            <div className="delbtn" i className="fas fa-times-circle" onClick={() => this.deleteComment(element.comments_id)}></div>
+            <div className="delbtn" i className="fas fa-times-circle" onClick={() => this.deleteComment(element.museum_id)}></div>
             <section key={i} className="thecomments">
               <div onClick={() => this.handleEdit(element)}>
                 <h3>{element.username} says:</h3>
@@ -226,7 +225,7 @@ class Museums extends React.Component {
           )
         })
       }
-    }
+    // }
     return(
       <div className="museumcontainer">
         <section className="museumSection">

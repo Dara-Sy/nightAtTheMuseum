@@ -7,6 +7,7 @@ import Login from './Login';
 import Museums from './Museums';
 import './App.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import TokenService from './TokenService';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class App extends React.Component {
     this.sendID = this.sendID.bind(this);
     this.delFaves = this.delFaves.bind(this);
     this.toggleFave = this.toggleFave.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   affectMuseumAll(newArray) {
@@ -69,7 +71,7 @@ export default class App extends React.Component {
         }
       })
     .catch( err => {
-      window.location.replace(`/login`)
+      // window.location.replace(`/login`)
     })
   }
 
@@ -112,7 +114,7 @@ export default class App extends React.Component {
       }
     })
     let data = newFaves.splice(index, 1)
-    fetch(`/api/3/faves`, {
+    fetch(`/api/${this.state.userid}/faves`, {
       body: JSON.stringify(data[0]),
       cache: 'no-cache',
       credentials: 'same-origin',
@@ -131,6 +133,11 @@ export default class App extends React.Component {
     })
   }
 
+  handleLogout() {
+    TokenService.destroy()
+    window.location.replace('/login')
+  }
+
   render() {
     return (
       <body>
@@ -140,7 +147,7 @@ export default class App extends React.Component {
             <a className="navlinks" href="/login"> Home </a>
             <a className="navlinks" href="/search"> Search </a>
             <a className="navlinks" href="/:userid/faves"> Profile </a>
-            <a className="navlinks" href="/:userid/faves"> Log Out </a>
+            <a className="navlinks" onClick={() => this.handleLogout()}> Log Out </a>
         </header>
           <Switch>
             <Route
