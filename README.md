@@ -34,6 +34,14 @@ Updated faves table in ERD
 
 ![1](https://git.generalassemb.ly/DAP/project-3/blob/master/faves%20table.jpg)
 
+## React Tree: 
+
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/appjs.jpg)
+
+## Routes Chart
+
+![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0112.jpg)
+
 
 ## Technologies: 
 - React - used to render the views of the CRUD app
@@ -45,13 +53,14 @@ Updated faves table in ERD
 - Google Maps API - to map/locate the museums
 
 ## Installation Instructions: 
-- Go into my repo
+- Go into this repo
 - Fork and Git Clone
 - Go into the Terminal Command Line
-- subl . 
 - npm i 
 - npm init 
-- npm run dev
+- npm bothdev
+- subl . 
+- npm run bothdev
 - psql -f db/schema.sql
 
 
@@ -94,28 +103,24 @@ Include the full list of features that you are considering for POST MVP
 ## Functional Components
 |   Component   |   Priority    |   Est Time (Hrs)  |   Time Invested (Hrs) |   Actual Time (Hrs)   |
 |   --- |   :---:   |   :---:   |   :---:   |   :---:   |
-|   Database Creation   |   H   |   0.5   |   0   |   0 |
-|   Create Museums Table   |   H   |   2 |   0 |   0 |
-|   Create Users Table   |   H   |   0.5 |   0 |   0 |
-|   Create Favorites Table   |   H   |   0.5 |   0 |   0 |
-|   Server   |   H   |   0.5   |   0   |   0 |
-|   React Components   |   H   |   6   |   0   |   0 |
-|   Controllers   |   H   |   3.5   |   0   |   0 |
-|   Routes   |   H   |   4.5   |   0   |   0 |
-|   Models   |   H   |   8   |   0   |   0 |
-|   Collecting Data on API   |   M   |   2   |   0    |   0    |
-|   Create   |   H   |   1 |   0 |   0 |
-|   Read   |   H   |   1   |   0    |    0   |
-|   Update  |   H   |   4   |   0    |   0    |
-|   Delete    |   H   |   4   |   0    |   0   |
-|   API Integration - Research    |   H   |   0.5   |   0    |   0    |
-|   API Integration - Planning    |   H   |   1 |   0    |   0    |
-|   API Integration - Development |   H  |   3 |   0    |   0    |
-|   User Authentication    |   M   |   2   |   0    |   0    |
-|   Creating MakeFake User Data    |   M   |   1   |   0    |   0    |
-|   JWT (JSON Web Token)   |   H   |   6   |   0   |   0 |
-|   CSS/Styling   |   L   |   6   |   0   |   0 |
-|   Sum Hours   |       |   63    |   0   |   0 |
+|   Database Creation   |   H   |   0.5   |   0.5   |   0.5 |
+|   Server   |   H   |   0.5   |   2   |   2 |
+|   React Components   |   H   |   6   |   11   |   11 |
+|   Controllers   |   H   |   3.5   |   5   |   5 |
+|   Routes   |   H   |   4.5   |   4   |   4 |
+|   Models   |   H   |   8   |   5   |   5 |
+|   Collecting Data on API   |   M   |   2   |   5    |   5    |
+|   Create   |   H   |   1 |   2 |   2 |
+|   Read   |   H   |   1   |   1    |    1   |
+|   Update  |   H   |   4   |   3    |   3    |
+|   Delete    |   H   |   4   |   3    |   3   |
+|   API Integration - Research    |   H   |   0.5   |   0.5    |   0.5    |
+|   API Integration - Planning    |   H   |   1 |   1    |   1    |
+|   API Integration - Development |   H  |   3 |   4    |   4    |
+|   Creating MakeFake User Data    |   M   |   1   |   1    |   1    |
+|   JWT (JSON Web Token)   |   H   |   6   |   4   |   4 |
+|   CSS/Styling   |   L   |   6   |   6   |   6 |
+|   Sum Hours   |       |   45    |   53   |   53 |
 
 
 
@@ -137,8 +142,10 @@ Include the full list of features that you are considering for POST MVP
 |   Dara   |   Lance    |   Arleigh  |  Phil  |
 |   --- |   :---:   |   :---:   |   :---:   | 
 |   Readme   |   Server: Models   |   React: Museums   |   Starting Templates   |
-|   Server: Render    |   Server: Routes   |   React: Faves + User Profile |   Login + Register + Server |
-|   Server: Controllers    |         |      |  Search  | 
+|   Server: Render    |   Server: Routes   |   React: Faves |   Login  |
+|   Server: Controllers    |    React: Search      |  React: User Profile    |  Register  | 
+|   React: Search    |   Design: CSS     |      |  Server  | 
+|   Design: CSS    |         |      |  Search  | 
 
 
 
