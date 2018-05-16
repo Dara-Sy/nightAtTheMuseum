@@ -248,6 +248,7 @@ class Museums extends React.Component {
             {userData}
           </div>
         </section>
+        <div className="footspace"></div>
       </div>
       )
   }
