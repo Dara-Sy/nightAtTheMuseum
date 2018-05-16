@@ -109,7 +109,9 @@ module.exports = {
         address: req.body.formatted_address,
         user_id: parseInt(req.params.userid)
       }
+      console.log('this is data', theData)
       res.locals.museum = await museumDB.addOneMuseum(theData);
+      console.log('this far')
       next();
     } catch (e) {
       next(e);

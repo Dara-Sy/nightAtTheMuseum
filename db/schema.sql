@@ -4,7 +4,7 @@ CREATE DATABASE dalp_museum;
 \c dalp_museum
 
 DROP TABLE IF EXISTS comments CASCADE;
-DROP TABLE IF EXISTS favemuseum CASCADE;
+DROP TABLE IF EXISTS favemuseums CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
@@ -26,7 +26,8 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE favemuseums (
-museum_id TEXT PRIMARY KEY,
+faveid SERIAL PRIMARY KEY,
+museum_id TEXT,
 name TEXT,
 address TEXT,
 user_id INTEGER REFERENCES users(user_id)

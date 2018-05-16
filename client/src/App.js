@@ -7,6 +7,7 @@ import Login from './Login';
 import Museums from './Museums';
 import './App.css';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import TokenService from './TokenService';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -69,7 +70,7 @@ export default class App extends React.Component {
         }
       })
     .catch( err => {
-      window.location.replace(`/login`)
+      // window.location.replace(`/login`)
     })
   }
 
@@ -112,7 +113,7 @@ export default class App extends React.Component {
       }
     })
     let data = newFaves.splice(index, 1)
-    fetch(`/api/3/faves`, {
+    fetch(`/api/${this.state.userid}/faves`, {
       body: JSON.stringify(data[0]),
       cache: 'no-cache',
       credentials: 'same-origin',

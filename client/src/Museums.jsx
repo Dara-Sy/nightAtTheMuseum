@@ -141,7 +141,7 @@ class Museums extends React.Component {
       let theData = {
         comments: document.querySelector('#comments').value,
         rating: document.querySelector('#rating').value,
-        user_id: document.querySelector('#user_id').value
+        user_id: this.state.userid
       }
       fetch(postURL, {
         body: JSON.stringify({theData: theData}),
@@ -249,6 +249,7 @@ class Museums extends React.Component {
             {userData}
           </div>
         </section>
+        <div className="footspace"></div>
       </div>
       )
   }
