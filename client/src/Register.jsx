@@ -33,7 +33,7 @@ export default class Register extends React.Component {
     } else {
       this.refs.dontmatchmsg.innerText = '';
       let theData = {...this.state};
-      fetch('http://localhost:3000/register', {
+      fetch('/register', {
         body: JSON.stringify(theData),
         cache: 'no-cache',
         credentials: 'same-origin',
