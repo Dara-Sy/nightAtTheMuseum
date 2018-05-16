@@ -1,11 +1,15 @@
 {
-  "name": "react-skeleton-api",
+  "name": "Night At The Museum",
   "version": "1.0.0",
-  "description": "a skeleton node server, delivering react",
+  "description": "a museum finding and favoriting app by DALP",
   "main": "server.js",
-  "author": "Jason Seminara <js@ga.co>",
+  "author": "Dara Arleigh Lance Phil",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "8.5.0",
+    "npm": "5.3.0"
+  },
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
@@ -59,9 +63,7 @@
     "build-dev": "webpack -d --progress --mode development",
     "build-watch": "webpack -d --progress --watch --mode development",
     "clean": "rm -rf dist && rm -rf node_modules",
-    "heroku-prebuild": "scripts/deployment_react.sh",
-    "heroku-postbuild": "scripts/deployment_cleanup.sh",
-    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
+    "heroku-postbuild": "npm install && cd client && npm install --only-dev && npm install && npm run build"
   },
   "keywords": [],
   "repository": {
