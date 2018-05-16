@@ -1,7 +1,7 @@
-DROP DATABASE dalp_museum;
-CREATE DATABASE dalp_museum;
+-- DROP DATABASE dalp_museum;
+-- CREATE DATABASE dalp_museum;
 
-\c dalp_museum
+-- \c dalp_museum
 
 DROP TABLE IF EXISTS comments CASCADE;
 DROP TABLE IF EXISTS favemuseums CASCADE;

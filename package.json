@@ -60,7 +60,8 @@
     "build-watch": "webpack -d --progress --watch --mode development",
     "clean": "rm -rf dist && rm -rf node_modules",
     "heroku-prebuild": "scripts/deployment_react.sh",
-    "heroku-postbuild": "scripts/deployment_cleanup.sh"
+    "heroku-postbuild": "scripts/deployment_cleanup.sh",
+    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
   },
   "keywords": [],
   "repository": {
