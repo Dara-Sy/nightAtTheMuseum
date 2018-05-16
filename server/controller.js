@@ -63,7 +63,7 @@ module.exports = {
         museum_id: req.params.museumid,
         comments: req.body.theData.comments,
         rating: req.body.theData.rating,
-        user_id: parseInt(req.body.theData.user_id)
+        user_id: parseInt(req.params.userid)
       }
       console.log('this is thedata', theData)
       res.locals.museum = await museumDB.createComment(theData);
