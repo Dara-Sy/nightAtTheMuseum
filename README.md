@@ -19,28 +19,28 @@ We are creating a React/Express Full CRUD App that uses Google Maps API to help 
 
 ## Wireframe:
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0037.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/wireframe.jpg)
 
 
 ## Piority Matrix:
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0038.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/prioritymatrix.jpg)
 
 ## ERD:
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0039.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/ERD.jpg)
 
 Updated faves table in ERD 
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/faves%20table.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/updatedERD.jpg)
 
 ## React Tree: 
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/appjs.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/reactTree.jpg)
 
 ## Routes Chart
 
-![1](https://git.generalassemb.ly/DAP/project-3/blob/master/IMG_0112.jpg)
+![1](https://github.com/Dara-Sy/nightAtTheMuseum/blob/master/images/routesChart.jpg)
 
 
 ## Technologies: 
